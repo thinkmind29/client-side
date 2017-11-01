@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+* {  box-sizing: border-box; }
+
+body, html{  
+  height: 100%;
+  min-height: 100%;
+}
+
+body{
+  padding: 0;
+  margin: 0;
+  font-family: Nunito ;
+}
+
+nav, 
+header, 
+footer {	display: block; }
+
+
+/* GRID */
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="col-"] {
+      width: 100%;
+  }
+}
+
+h1, h2, h3, h4, h5, h6, p{
+  text-align: center;
+}
+
+input, button, label{
+  border: none;
+  margin: 10px;
+  display: inline;
+  background-color: transparent;
+}
+
+input { border-bottom: 1px solid purple; width: 95% }
+
+input:focus{
+
+  border: none;
+  border-bottom: 3px solid purple
+
+}
+
+button{
+  width: 150px;
+  padding: 10px;
+  color: white;
+  background: purple;
+}
+
+#root, .rotas{
+  height: 100%;
+  min-height: 100%;
+}
+
+form span{
+  display: block;
+}
+
+@media only screen and (max-width: 500px){
+  button, input{
+    width: 100%;
+  }
+
+  form{
+    width: 100%;
+    box-shadow: 1px 1px 1px white;
+  }
+}

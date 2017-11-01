@@ -1,0 +1,34 @@
+.center{
+
+    height: 100%;
+    min-height: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -web-justify-content: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+form{
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    box-shadow: 1px 1px 1px gray;
+    padding: 40px;
+    background-color: rgba(250, 194, 194, 0.1);
+}
+
+
+#google{
+    background-color: rgb(255, 0, 0);
+}
+
+#sound{
+    background-color: rgb(255, 136, 0);
+}
+
+
+
+
