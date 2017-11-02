@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Nova+Mono');
 
 * {  box-sizing: border-box; }
 
@@ -10,7 +11,9 @@ body, html{
 body{
   padding: 0;
   margin: 0;
-  font-family: Nunito ;
+  font-family: 'Nova Mono', monospace;
+  background-image: url('fundo.jpg');
+  background-repeat: repeat;
 }
 
 nav, 
@@ -45,27 +48,22 @@ footer {	display: block; }
   display: table;
 }
 
-@media only screen and (max-width: 768px) {
-  /* For mobile phones: */
-  [class*="col-"] {
-      width: 100%;
-  }
-}
+
 
 h1, h2, h3, h4, h5, h6, p{
   text-align: center;
 }
 
-input, button, label{
+input, button, label, textarea{
   border: none;
   margin: 10px;
   display: inline;
   background-color: transparent;
 }
 
-input { border-bottom: 1px solid purple; width: 95% }
+input, textarea { border-bottom: 1px solid purple; width: 95% }
 
-input:focus{
+input:focus, textarea:focus{
 
   border: none;
   border-bottom: 3px solid purple
@@ -84,11 +82,44 @@ button{
   min-height: 100%;
 }
 
+form{
+  
+  box-shadow: 1px 1px 1px gray;
+  padding: 40px;
+  background-color: rgb(250, 194, 194);
+}
+
 form span{
   display: block;
 }
 
-@media only screen and (max-width: 500px){
+.center{
+      height: 100%;
+      min-height: 100%;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-align-items: center;
+      align-items: center;
+      -web-justify-content: center;
+      justify-content: center;
+      flex-direction: column;
+  }
+  
+  
+#google{
+  background-color: rgb(255, 0, 0);
+}
+
+#sound{
+  background-color: rgb(255, 136, 0);
+}
+
+@media screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="col-"] {
+      width: 100%;
+  }
+
   button, input{
     width: 100%;
   }

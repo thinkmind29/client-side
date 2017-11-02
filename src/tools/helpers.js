@@ -1,6 +1,6 @@
-export const isLogged = () => {
-    if(localStorage.getItem('user'))
+export function isLogged() {
+    if(localStorage.getItem('user') !== null)
         return true;
-    else
+    else if(localStorage.getItem('user') === null)
         return false;
 }

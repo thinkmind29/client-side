@@ -8,7 +8,7 @@ import css from './login.css';
 class Login extends Component {
     constructor(props){
         super(props);
-        this.state = { redirect: false, message: ''};
+        this.state = { redirect: false, message: '', redirectReg: false};
     }
 
     
@@ -40,41 +40,54 @@ class Login extends Component {
 
     }
 
-    goToRegister = async () => { this.setState({redirect: 'register'}) }
+    goToRegister = () => { this.setState({redirectReg: true}) }
 
     render() {
 
-        if(this.state.redirect)
-            return <Redirect to="/user" />
-        if(this.state.redirect === 'register')
+        if(this.state.redirect){
+            return <Redirect to="/user" />            
+        }
+        if(this.state.redirectReg){
             return <Redirect to="/register" />
+        }
         return (
         
-            <div className="center">
-               <div className="card">
-                   <form>
-                       <p>Faça login com as redes sociais: </p>
-                        <button id="google">Google</button>
-                        <button id="sound">SoundCloud</button>
-                        <br/>
-                        <br/>
-                        <p>Ou utilize o seu usuário local</p>
-                        <br/>
-                        <span>
-                            <input type="email" placeholder="Email:" ref="email"/>
-                        </span>
-                        <span>                        
-                        <input type="password" placeholder="Senha:" ref="senha"/>
-                            </span>
-                        <span>                        
-                            <button onClick={this.logar}> Entrar </button>
-                        </span>                        
-                    </form>
-                    <p>Não tem uma conta? <a onClick={this.goToRegister} href="javascript:void(0)">Cadastre-se</a></p>
-                </div>
+            
+        <div className="register">
+            <div className="card">
                 <br/>
-                <p>{this.state.message}</p>
+                <br/>
+                <br/>
+                <br/>
+                <form className="row">
+                    <p className="col-12">Crie sua conta com suas redes sociais: </p>
+                    <div className="col-6">
+                        <button id="google" className="col-12">Google</button>
+                    </div>
+                    <div className="col-6">
+                        <button id="sound" className="col-12">SoundCloud</button>
+                    </div>
+                        <p className="col-12">Ou crie agora um usuário local</p>
+                    <br/>
+                    <span>
+                        <input type="text" placeholder="Email:" ref="email"/>
+                    </span>
+                    <span>
+                        <input type="email" placeholder="Senha:" ref="senha"/>
+                    </span>
+                    <br/>
+                    <span>
+                        <button onClick={this.logar}> Entrar </button>
+                    </span>
+                        <p>Não tem uma conta? <a onClick={this.goToRegister} href="javascript:void(0)">Cadastre-se</a></p>                                                                 
+                        <p>{this.state.message}</p>                                               
+                </form>
             </div>
+            <br />
+            <br />
+            <br />
+            <br />
+         </div>
         );
     }
 }

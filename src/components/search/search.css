@@ -1,0 +1,20 @@
+ul.scroll li div{
+    border: 1px 0px 1px 0px;
+}
+
+ul.scroll li div p{
+    font-size: 16px;
+    margin: 0px;
+    text-align: left;
+}
+
+ul.scroll li{
+    list-style: none;
+}
+
+
+ul.scroll li div img{
+    height: 20px;
+    width: 20px;
+}
+
