@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import * as $ from 'jquery';
+import Button from '../../components/mini-components/button';
 import { URL_USER } from '../../tools/consts';
 import PainelComponent from '../../components/painel/painel';
 import search from './search.css';
@@ -69,7 +70,7 @@ class SearchPage extends Component {
                             <option value="hability">Habilidade</option>
                         </select>
                         <input type="search" placeholder="Pesquisar" ref="word" />
-                        <button onClick={this.search}>Pesquisar</button>
+                        <Button click={this.search} nome="pesquisar" />
                         <PainelComponent person={this.state.searcheds} />
                     </div>
                     <div className="col-4 closer">

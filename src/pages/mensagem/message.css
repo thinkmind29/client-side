@@ -9,3 +9,14 @@
 .message h1{
     margin: 0;
 }
+
+.message div.aside{
+
+    border-right: 1px solid grey;
+
+}
+
+.message div.aside div{
+    border-bottom: 1px solid gray;
+    margin-right: 0xp;
+}
