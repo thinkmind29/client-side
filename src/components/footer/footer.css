@@ -9,3 +9,12 @@ footer p{
     margin: 0px;
     text-align: right;
 }
+
+.footer-logo{
+    height: 50%;
+    width: 50%;
+}
+
+.people{
+    margin-top: 3%;
+}
