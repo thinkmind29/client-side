@@ -1,7 +1,13 @@
+import insta from '../../icons/iconInsta.jpg';
+import sound from '../../icons/iconSound.jpg';
+import yout from '../../icons/iconYout.jpg';
+import twitter from '../../icons/iconTwi.jpg';
 import React from 'react';
 import * as $ from 'jquery';
 import { URL_USER } from "../../tools/consts";
 import { Redirect } from 'react-router-dom';
+import Image from '../../components/mini-components/image';
+import Social from '../../components/mini-components/social';
 
 import user from './user.css';
 
@@ -69,21 +75,7 @@ class User extends React.Component {
                 redirect: false
             })
         })
-    } catch(e){
-        this.setState({
-            nome: '',
-            idade: 0,
-            email: '',
-            habilidade: '',
-            img: '',
-            bio: '',
-            cidade: '',
-            estado: '',
-            pais: '',
-            tags: '',
-            redirect: false
-        })
-    }
+    } catch(e){ throw e; }
 
    }
    
@@ -97,18 +89,19 @@ class User extends React.Component {
         return (
             <div className="user">
                     <div className="row">
-                        <img className="cover" src={this.state.cover} />   
+                        <Image classe="cover" photo={this.state.cover} />
                     </div>
                     <div className="row"> 
-                        <img className="profile" src={this.state.img} />
+                        <Image classe="profile" photo={this.state.img} />
                     </div>
 
                     <div className="row">
                         <div className="col-4">
-                            <p>{this.state.insta}</p>
-                            <p>{this.state.sound}</p>
-                            <p>{this.state.twitter}</p>
-                            <p>{this.state.youtube}</p>
+                            <Social img={insta} link={`https://instagram.com/${this.state.insta}`} classe="badge" cl="linkSocial"/>
+                            <Social img={twitter} link={`https://twitter.com/${this.state.twitter}`} classe="badge" cl="linkSocial"/>
+                            <Social img={sound} link={`https://soundcloud.com/${this.state.sound}`} classe="badge" cl="linkSocial"/>
+                            <Social img={yout} link={`https://youtube.com/${this.state.youtube}`} classe="badge" cl="linkSocial"/>
+                            
                         </div>
                         <p className="nome col-4">{this.state.nome}, {this.state.idade} anos</p>
                     
@@ -128,5 +121,8 @@ class User extends React.Component {
         );
     }
 }
+
+
+
 
 export default User;

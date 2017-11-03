@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import User from './pages/user/user';
 import NavigateBar from './pages/nav/nav';
+import Message from './pages/mensagem/message'
 import Search from './pages/search/search';
 import Login from './components/login/login';
 import Footer  from './components/footer/footer';
@@ -23,6 +24,7 @@ class App extends Component {
           <Route exact path="/register" component={ Register } />
           <Route exact path="/register-2" component={ Register2 } />
           <Route exact path="/user" component={ User } />
+          <Route exact path="/message" component={ Message } />
           <Route exact path="/search" component={ Search } />
           <Footer />
       </div> 

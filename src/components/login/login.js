@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Button from '../mini-components/button';
 import { Redirect } from 'react-router-dom';
 import { URL_LOGIN } from '../../tools/consts';
 import * as $ from 'jquery';
@@ -8,7 +9,7 @@ import css from './login.css';
 class Login extends Component {
     constructor(props){
         super(props);
-        this.state = { redirect: false, message: '', redirectReg: false};
+        this.state = { redirect: false, message: '', redirectReg: false,};
     }
 
     
@@ -62,10 +63,10 @@ class Login extends Component {
                 <form className="row">
                     <p className="col-12">Crie sua conta com suas redes sociais: </p>
                     <div className="col-6">
-                        <button id="google" className="col-12">Google</button>
+                        <Button click={this.regGoogle} nome="Google" estilo="google" classe="col-12"/>
                     </div>
                     <div className="col-6">
-                        <button id="sound" className="col-12">SoundCloud</button>
+                        <Button click={this.regSound} nome="SoundCloud" estilo="sound" classe="col-12"/>
                     </div>
                         <p className="col-12">Ou crie agora um usuário local</p>
                     <br/>
@@ -77,7 +78,7 @@ class Login extends Component {
                     </span>
                     <br/>
                     <span>
-                        <button onClick={this.logar}> Entrar </button>
+                        <Button click={this.logar} nome="Entrar"/>
                     </span>
                         <p>Não tem uma conta? <a onClick={this.goToRegister} href="javascript:void(0)">Cadastre-se</a></p>                                                                 
                         <p>{this.state.message}</p>                                               

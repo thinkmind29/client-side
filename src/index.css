@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 @import url('https://fonts.googleapis.com/css?family=Nova+Mono');
+@import url('https://fonts.googleapis.com/css?family=Rozha+One');
 
 * {  box-sizing: border-box; }
 
@@ -11,7 +12,7 @@ body, html{
 body{
   padding: 0;
   margin: 0;
-  font-family: 'Nova Mono', monospace;
+  font-family: 'Nunito';
   background-image: url('fundo.jpg');
   background-repeat: repeat;
 }
@@ -54,11 +55,13 @@ h1, h2, h3, h4, h5, h6, p{
   text-align: center;
 }
 
-input, button, label, textarea{
+input, button, label, textarea, select{
   border: none;
   margin: 10px;
   display: inline;
   background-color: transparent;
+  font-family: 'Nunito';
+  
 }
 
 input, textarea { border-bottom: 1px solid purple; width: 95% }
@@ -73,7 +76,7 @@ input:focus, textarea:focus{
 button{
   width: 150px;
   padding: 10px;
-  color: white;
+  color: white; 
   background: purple;
 }
 

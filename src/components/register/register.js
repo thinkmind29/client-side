@@ -3,6 +3,7 @@ import * as $ from 'jquery';
 import ReactDOM from 'react-dom';
 import { Redirect } from 'react-router-dom';
 import { URL_USER } from '../../tools/consts';
+import Button from '../mini-components/button.js';
 import register from './register.css';
 
 class RegisterComponent extends Component {
@@ -30,6 +31,14 @@ class RegisterComponent extends Component {
         this.setState({redirect: true});
 
     }
+
+    logGoogle = () => {
+        return alert('Google');
+    }
+
+    logSound = () =>{
+        return alert('Sound');
+    }
     
     render() {
         if(this.state.redirect)
@@ -44,10 +53,11 @@ class RegisterComponent extends Component {
                    <form className="row">
                         <p className="col-12">Crie sua conta com suas redes sociais: </p>
                         <div className="col-6">
-                            <button id="google" className="col-12">Google</button>
+                            {/* <button id="google" className="col-12">Google</button> */}
+                            <Button click={this.logGoogle} nome="Google" estilo="google" classe="col-12"/>
                         </div>
                         <div className="col-6">
-                            <button id="sound" className="col-12">SoundCloud</button>
+                        <Button click={this.logSound} nome="SoundCloud" estilo="sound" classe="col-12"/>                           
                         </div>
                         <p className="col-12">Ou crie agora um usuário local</p>
                         <br/>
@@ -78,7 +88,7 @@ class RegisterComponent extends Component {
                         <span>                        
                             <input type="text" placeholder="País:" ref="nation"/>
                         </span>
-                            <button onClick={this.createUser}> Entrar </button>
+                            <Button click={this.createUser} nome="Entrar" />                            
                             <p>{this.state.message}</p>                                               
                     </form>
                 </div>
