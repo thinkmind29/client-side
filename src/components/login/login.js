@@ -61,20 +61,20 @@ class Login extends Component {
                 <br/>
                 <br/>
                 <form className="row">
-                    <p className="col-12">Crie sua conta com suas redes sociais: </p>
+                    <p className="col-12">Faça login com suas redes sociais: </p>
                     <div className="col-6">
                         <Button click={this.regGoogle} nome="Google" estilo="google" classe="col-12"/>
                     </div>
                     <div className="col-6">
                         <Button click={this.regSound} nome="SoundCloud" estilo="sound" classe="col-12"/>
                     </div>
-                        <p className="col-12">Ou crie agora um usuário local</p>
+                        <p className="col-12">Ou entre agora com um usuário local</p>
                     <br/>
                     <span>
-                        <input type="text" placeholder="Email:" ref="email"/>
+                        <input type="email" placeholder="Email:" ref="email"/>
                     </span>
                     <span>
-                        <input type="email" placeholder="Senha:" ref="senha"/>
+                        <input type="password" placeholder="Senha:" ref="senha"/>
                     </span>
                     <br/>
                     <span>

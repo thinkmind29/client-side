@@ -72,6 +72,9 @@ input:focus, textarea:focus{
   border-bottom: 3px solid purple
 
 }
+p{
+  text-transform: capitalize;
+}
 
 button{
   width: 150px;
@@ -109,7 +112,7 @@ form span{
   }
   
   
-#google{
+.google{
   background-color: rgb(255, 0, 0);
 }
 

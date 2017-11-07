@@ -12,11 +12,11 @@
 
 .message div.aside{
 
-    border-right: 1px solid grey;
+    border-left: 1px solid grey;
 
 }
 
-.message div.aside div{
+.message div.side div{
     border-bottom: 1px solid gray;
     margin-right: 0xp;
 }

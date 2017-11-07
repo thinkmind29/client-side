@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import * as $ from 'jquery';
 import ReactDOM from 'react-dom';
 import { Redirect } from 'react-router-dom';
-import { URL_USER } from '../../tools/consts';
+import { URL_USER, URL_AUTH_GOOGLE } from '../../tools/consts';
 import Button from '../mini-components/button.js';
 import register from './register.css';
+import GoogleLogin from 'react-google-login';
+
 
 class RegisterComponent extends Component {
 
@@ -29,23 +31,30 @@ class RegisterComponent extends Component {
         const stg = JSON.stringify(data);
         localStorage.setItem('cad', stg);
         this.setState({redirect: true});
-
+        this.logGoogle = this.logGoogle.bind(this);
     }
 
-    logGoogle = () => {
-        return alert('Google');
+    
+
+    regGoogle = (resp) =>{
+        var token = resp.tokenId;
+        // console.log(resp.tokenId);
+        // console.log(resp);
+        $.get(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${token}`).then(user => console.log(user));
     }
 
-    logSound = () =>{
-        return alert('Sound');
+    logSound = (event) => {
+       
     }
     
+
     render() {
         if(this.state.redirect)
             return <Redirect to="/register-2"/>
         return (
             <div className="register">
                <div className="card">
+                   
                    <br/>
                    <br/>
                    <br/>
@@ -53,8 +62,12 @@ class RegisterComponent extends Component {
                    <form className="row">
                         <p className="col-12">Crie sua conta com suas redes sociais: </p>
                         <div className="col-6">
-                            {/* <button id="google" className="col-12">Google</button> */}
-                            <Button click={this.logGoogle} nome="Google" estilo="google" classe="col-12"/>
+                        <GoogleLogin clientId="553870782029-nh8b1q10tap16tqbf4e24ecgrdor9r6l.apps.googleusercontent.com"
+                                buttonText="Google"
+                                className="col-12 google"
+                                onSuccess={this.logSound}
+                                onFailure={this.logSound} 
+                                id="google"/ >
                         </div>
                         <div className="col-6">
                         <Button click={this.logSound} nome="SoundCloud" estilo="sound" classe="col-12"/>                           

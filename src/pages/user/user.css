@@ -20,6 +20,8 @@
   align-items: center;
   -webkit-justify-content: center;
   justify-content: center;
+  margin-top: -11%;
+  margin-left: 40%;
   /* position: absolute;
   z-index: 1;
   top: 50%;
@@ -27,7 +29,12 @@
   margin-top: -150px;
   margin-left: -100px; */
 }
+div.atributos p{
+  margin: 0;
+  text-align: left;
+  text-transform: capitalize;
 
+}
 .linkSocial{
 
   text-decoration: none;
@@ -39,6 +46,11 @@
   height: 50px;
 }
 
+.biografia{
+  padding: 20px;
+  text-align: left;
+  background-color: rgb(218, 178, 178);
+}
 
 @media screen and (max-width: 560px){
   .user{

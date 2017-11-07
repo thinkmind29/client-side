@@ -16,7 +16,8 @@ class SearchPage extends Component {
 
     search = () => {
         const option = ReactDOM.findDOMNode(this.refs.option).value;
-        const termo = ReactDOM.findDOMNode(this.refs.word).value;
+        const termo = ReactDOM.findDOMNode(this.refs.word).value.toUpperCase();
+        console.log(option, termo);
 
         $.ajax({
             method: 'GET',
@@ -30,7 +31,13 @@ class SearchPage extends Component {
             this.setState({searcheds: data});
         })
     }
-    
+
+    // pageto = (event) =>{
+
+    //     event.target.
+
+    // }
+
     componentDidMount = async () => {
 
          $.ajax({

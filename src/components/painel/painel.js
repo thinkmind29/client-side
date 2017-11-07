@@ -17,7 +17,7 @@ export default class SearchComponent extends React.Component{
                         
                         this.props.person.map(
                             user => {
-                                return <li key={user._id}>
+                                return <li key={user._id} onClick={this.props.click}>
                                 <div>                
                                     <p> <Img imgage={user.photo} /> {user.name}</p>
                                     <p className="atributos"> {user.age} anos, {user.hability}</p>

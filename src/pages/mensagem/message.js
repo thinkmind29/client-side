@@ -48,7 +48,7 @@ class Message extends Component {
         return (
             <div className="message">
                 <div className='row'>
-                    <div className="col-4 aside">
+                    <div className="col-4">
                         <Painel person={this.state.persons} />
                     </div>
                     <div className="col-8">

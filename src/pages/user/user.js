@@ -8,7 +8,7 @@ import { URL_USER } from "../../tools/consts";
 import { Redirect } from 'react-router-dom';
 import Image from '../../components/mini-components/image';
 import Social from '../../components/mini-components/social';
-
+import Video from '../../components/mini-components/video';
 import user from './user.css';
 
 class User extends React.Component {
@@ -100,22 +100,29 @@ class User extends React.Component {
                             <Social img={insta} link={`https://instagram.com/${this.state.insta}`} classe="badge" cl="linkSocial"/>
                             <Social img={twitter} link={`https://twitter.com/${this.state.twitter}`} classe="badge" cl="linkSocial"/>
                             <Social img={sound} link={`https://soundcloud.com/${this.state.sound}`} classe="badge" cl="linkSocial"/>
-                            <Social img={yout} link={`https://youtube.com/${this.state.youtube}`} classe="badge" cl="linkSocial"/>
-                            
+                            <Social img={yout} link={`https://youtube.com/${this.state.youtube}`} classe="badge" cl="linkSocial"/>          
                         </div>
-                        <p className="nome col-4">{this.state.nome}, {this.state.idade} anos</p>
+                    <p className="nome col-4">{this.state.nome}, {this.state.idade} anos</p>
                     
                     <div className="atributos col-4">
-                        <p><img src="" alt="Local: "/> {this.state.cidade}, {this.state.pais}</p>
-                        <p><img src="" alt="Habilidade: "/> {this.state.habilidade}</p>
-                        <p><img src="" alt="Estilos: "/> {this.state.tags} </p>                      
+                        <p> {this.state.cidade}, {this.state.pais}</p>
+                        <p>{this.state.habilidade}</p>
+                        <p>{this.state.tags} </p>                      
                     </div>              
-                    </div>     
+                    </div>
+                    <div className="row">
+                    <video width="320" height="400">
+                        <source src="https://www.youtube.com/watch?v=rySTq4CdVeA"/>
+                     </video>
+                        {/* <Video link="https://www.youtube.com/watch?v=rySTq4CdVeA" /> */}
+                    </div>
+                    <div className="row">     
                     <div className='biografia'>
                         <h1>Sobre Mim</h1>
                         <p>
                             {this.state.bio}   
                         </p>
+                    </div>
                     </div>
                 </div>     
         );
