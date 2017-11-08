@@ -10,18 +10,16 @@
 
   width: 200px;
   height: 200px;
+  margin:50px;
+  margin-left: 10%;
   border-radius: 200px;
-  display: flex;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-
+  
 }
 div.atributos p{
   margin: 0;
   text-align: left;
   text-transform: capitalize;
+  padding: 0;
 
 }
 .linkSocial{
@@ -31,14 +29,16 @@ div.atributos p{
 }
 
 .badge{
-  width: 50xp;
-  height: 50px;
+  margin: 10px 10px 0 10px;
+  width: 25xp;
+  height: 25px;
+  margin-left: 8%;
 }
 
 .biografia{
   padding: 20px;
   text-align: left;
-  background-color: rgb(218, 178, 178);
+  /* background-color: rgb(218, 178, 178); */
 }
 
 @media screen and (max-width: 560px){
@@ -46,4 +46,11 @@ div.atributos p{
     margin:0;
     width: 100%;
   }
+}
+
+.container{
+  margin: 0;
+  padding: 0;
+  height: auto;
+  min-height: 100%;
 }

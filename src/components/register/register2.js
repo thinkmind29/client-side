@@ -16,13 +16,13 @@ class RegisterComponent extends Component {
         event.preventDefault();
         var deserialized = sessionStorage.getItem('cad');
         const data = JSON.parse(deserialized);
-        data.instagram = ReactDOM.findDOMNode(this.refs.insta).value;
-        data.youtube = ReactDOM.findDOMNode(this.refs.yout).value;
-        data.twitter = ReactDOM.findDOMNode(this.refs.twitter).value;
-        data.soundCloud = ReactDOM.findDOMNode(this.refs.sound).value;
-        data.hability = ReactDOM.findDOMNode(this.refs.hab).value;
-        data.tags = [ReactDOM.findDOMNode(this.refs.style).value]
-        data.biography = ReactDOM.findDOMNode(this.refs.bio).value;
+        data.instagram = ReactDOM.findDOMNode(this.refs.insta1).value;
+        data.youtube = ReactDOM.findDOMNode(this.refs.yout1).value;
+        data.twitter = ReactDOM.findDOMNode(this.refs.twitter1).value;
+        data.soundCloud = ReactDOM.findDOMNode(this.refs.sound1).value;
+        data.hability = ReactDOM.findDOMNode(this.refs.hab1).value;
+        data.tags = [ReactDOM.findDOMNode(this.refs.style1).value]
+        data.biography = ReactDOM.findDOMNode(this.refs.bio1).value;
         
         console.log(data);
         await $.ajax({
@@ -55,25 +55,25 @@ class RegisterComponent extends Component {
                         <br/>
 
                         <span>
-                            <input type="text" placeholder="Twitter:" ref="twitter"/>
+                            <input type="text" placeholder="Twitter:" ref="twitter1"/>
                         </span>
                         <span>
-                            <input type="text" placeholder="SoundCloud:" ref="sound"/>
+                            <input type="text" placeholder="SoundCloud:" ref="sound1"/>
                         </span>
                         <span>
-                            <input type="text" placeholder="Instagram:" ref="insta" />
+                            <input type="text" placeholder="Instagram:" ref="insta1" />
                         </span>
                         <span>
-                            <input type="text" placeholder="Youtube:" ref="yout"/>
+                            <input type="text" placeholder="Youtube:" ref="yout1"/>
                         </span>
                         <span>
-                            <input type="text" placeholder="Habilidade / Instrumento:" ref="hab"/>
+                            <input type="text" placeholder="Habilidade / Instrumento:" ref="hab1"/>
                         </span>
                         <span>
-                            <input type="text" placeholder="Estilo Musical:" ref="style"/>
+                            <input type="text" placeholder="Estilo Musical:" ref="style1"/>
                         </span>
                         <span>
-                            <textarea type="text" ref="bio" placeholder="Fale, um pouco sobre você, seus objetivos e projetos!"/>
+                            <textarea type="text" ref="bio1" placeholder="Fale, um pouco sobre você, seus objetivos e projetos!"/>
                         </span>
                             <br />
                             <button onClick={this.createUser}> Entrar </button>

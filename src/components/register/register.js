@@ -41,16 +41,16 @@ class RegisterComponent extends Component {
         $.get(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${token}`).then(
             user => {
                 console.log(user);
-                const obj = {};
+                let obj = {};
                 obj.name= user.name;
                 obj.email = user.email;
                 obj.photo = user.imageUrl;
                 obj.provider = 'google';
                 obj.provider_id = user.sub;
                 console.log(obj);
-                const serialize = JSON.stringify(user);
+                const serialize = JSON.stringify(obj);
                 sessionStorage.setItem('store', serialize);
-                this.setState({redirect: true})
+                this.setState({redirect: false})
             }
         );
 
@@ -58,19 +58,20 @@ class RegisterComponent extends Component {
     }
 
 
-    regFace = (response) => {
-        const obj = {};
+    regFacebookCallback = async (response) => {
+        
+        let obj = {};
         obj.name = response.name;
         obj.email = response.email;
         obj.provider = 'facebook';
         obj.photo = response.picture.data.url;
         obj.provider_id = response.id;
-        console.log(obj);
-        this.setState({redirect: true});
-    }
 
-    regFacebooCallback = (response) => {
-        return response;
+        const serialize = JSON.stringify(obj);
+        sessionStorage.setItem('store', serialize);
+        await this.setState({redirect: false});
+
+
     }
     
 
@@ -100,11 +101,11 @@ class RegisterComponent extends Component {
                         <div className="col-6">
                             <FacebookLogin 
                                 appId="1748511505449819"
-                                autoLoad={true}
+                                autoLoad={false}
+                                textButton="Facebook"
                                 fields="name,email,picture"
                                 cssClass="col-12"
-                                onclick={this.regFaceCallback}
-                               regFaceCallback={this.regFaceCallback}
+                                callback={this.regFacebookCallback}
                             />                       
                         </div>
                         <p className="col-12">Ou crie agora um usuário local</p>

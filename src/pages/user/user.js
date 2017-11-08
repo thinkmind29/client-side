@@ -1,7 +1,7 @@
-import insta from '../../icons/iconInsta.jpg';
-import sound from '../../icons/iconSound.jpg';
-import yout from '../../icons/iconYout.jpg';
-import twitter from '../../icons/iconTwi.jpg';
+import insta from '../../icons/instagram.png';
+import sound from '../../icons/soundcloud.png';
+import yout from '../../icons/youtube.png';
+import twitter from '../../icons/twitter.png';
 import React from 'react';
 import * as $ from 'jquery';
 import { URL_USER } from "../../tools/consts";
@@ -22,7 +22,7 @@ class User extends React.Component {
             idade: 0,
             email: '',
             habilidade: '',
-            img: 'http://e-cdn-images.deezer.com/images/artist/bd29f4b2524b1bb5126ef3fa7976566a/200x200-000000-80-0-0.jpg',
+            photo: '',
             cidade: '',
             estado: '',
             bio: '',
@@ -31,7 +31,6 @@ class User extends React.Component {
             sound: '',
             youtube: '',
             twitter: '',
-            cover: 'https://optclean.com.br/wp-content/uploads/2016/11/capa-para-facebook3.jpg',
             redirect: false
        }
        
@@ -80,7 +79,7 @@ class User extends React.Component {
                 const log = JSON.parse(sessionStorage.getItem('store'));
                 this.setState({
                     nome: log.name,
-                    photo: log.imageUrl,
+                    photo: log.photo,
                     idade: data.age,
                     habilidade: data.hability,
                     cidade: data.city,
@@ -109,31 +108,20 @@ class User extends React.Component {
         
         return (
             <div className="user">
-                    <div className="row"> 
-                        <Image classe="profile" photo={this.state.photo} />
+                <div className="row">
+                    <div className="col-3  container">
+                        <Image classe="profile center" photo={this.state.photo} />
+                        <Social img={insta} link={`https://instagram.com/${this.state.insta}`} classe="badge" cl="linkSocial"/>
+                        <Social img={twitter} link={`https://twitter.com/${this.state.twitter}`} classe="badge" cl="linkSocial"/>
+                        <Social img={sound} link={`https://soundcloud.com/${this.state.sound}`} classe="badge" cl="linkSocial"/>
+                        <Social img={yout} link={`https://youtube.com/${this.state.youtube}`} classe="badge" cl="linkSocial"/>
+                        <p>{this.state.habilidade}</p>
+                        <p>{this.state.tags} </p>
+                        <p>{this.state.cidade}, {this.state.pais}</p>
                     </div>
 
-                    <div className="row">
-                        <div className="col-4">
-                            <Social img={insta} link={`https://instagram.com/${this.state.insta}`} classe="badge" cl="linkSocial"/>
-                            <Social img={twitter} link={`https://twitter.com/${this.state.twitter}`} classe="badge" cl="linkSocial"/>
-                            <Social img={sound} link={`https://soundcloud.com/${this.state.sound}`} classe="badge" cl="linkSocial"/>
-                            <Social img={yout} link={`https://youtube.com/${this.state.youtube}`} classe="badge" cl="linkSocial"/>          
-                        </div>
-                    <p className="nome col-4">{this.state.nome}, {this.state.idade} anos</p>
-                    
-                    <div className="atributos col-4">
-                        <p> {this.state.cidade}, {this.state.pais}</p>
-                        <p>{this.state.habilidade}</p>
-                        <p>{this.state.tags} </p>                      
-                    </div>              
-                    </div>
-                    <div className="row">
-                    <video width="320" height="400">
-                        <source src="https://www.youtube.com/watch?v=rySTq4CdVeA"/>
-                     </video>
-                    </div>
-                    <div className="row">     
+                    <div className="col-9 teste">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/t8eTy2evF-M" frameborder="0" allowfullscreen></iframe>
                     <div className='biografia'>
                         <h1>Sobre Mim</h1>
                         <p>
@@ -141,7 +129,8 @@ class User extends React.Component {
                         </p>
                     </div>
                     </div>
-                </div>     
+                </div>
+            </div> 
         );
     }
 }

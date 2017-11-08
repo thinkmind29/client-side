@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import photo from '../../icons/iconGoogle.jpg';
+import photo from '../../icons/man.png';
 
 class ImageContent extends Component {
     

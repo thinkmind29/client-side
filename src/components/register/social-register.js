@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Redirect } from "react-router-dom";
 import * as $ from 'jquery';
-import { URL_LOGIN_SOCIAL } from '../../tools/consts';
+import { URL_REGISTER_SOCIAL } from '../../tools/consts';
 
 
 class SocailRegister extends Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state ={
-            message: '',
             redirect: false
         }
     }
@@ -19,11 +18,11 @@ class SocailRegister extends Component {
     register = (event) =>{
         event.preventDefault();
 
-        var info = sessionStorage.getItem('reg');
-        var deserialize = JSON.parse(info);
+        var info = sessionStorage.getItem('store');
+        var data = JSON.parse(info);
 
-        var data = {};
         data.city = ReactDOM.findDOMNode(this.refs.city).value;
+        data.age = ReactDOM.findDOMNode(this.refs.age).value;
         data.state = ReactDOM.findDOMNode(this.refs.state).value;
         data.nation = ReactDOM.findDOMNode(this.refs.nation).value;
         data.instagram = ReactDOM.findDOMNode(this.refs.insta).value;
@@ -34,17 +33,23 @@ class SocailRegister extends Component {
         data.tags = [ReactDOM.findDOMNode(this.refs.style).value]
         data.biography = ReactDOM.findDOMNode(this.refs.bio).value;
         console.log(data);
-        $.post(URL_LOGIN_SOCIAL, data).then(resp => {
+        $.post(URL_REGISTER_SOCIAL, data).then(resp => {
             const token = JSON.stringify(resp);
-            localStorage.setItem('user', token);
+            console.log(resp);
+            sessionStorage.setItem('user', token);   
             this.setState({redirect: true});
-        });
+        })
+
+        
     } 
 
 
     render() {
+
+        
         if(this.state.redirect)
-            <Redirect to="/user" />
+            return <Redirect to="/user" />
+       
         return (
             
              <div className="register">
@@ -56,6 +61,9 @@ class SocailRegister extends Component {
                    <form className="row">
                         <p className="col-12">Apenas mais um passo, nós fale sobre você!</p>
                         <br/>
+                        <span>
+                            <input type="number" placeholder="Idade:" ref="age"/>
+                        </span>
                         <span>
                             <input type="text" placeholder="Twitter:" ref="twitter"/>
                         </span>
@@ -87,8 +95,7 @@ class SocailRegister extends Component {
                             <textarea type="text" ref="bio" placeholder="Fale, um pouco sobre você, seus objetivos e projetos!"/>
                         </span>
                             <br />
-                            <button onClick={this.register}> Register </button>
-                            <p>{this.state.message}</p>                                               
+                            <button onClick={this.register}> Register </button>                                       
                     </form>
                 </div>
                 <br />

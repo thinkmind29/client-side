@@ -4,6 +4,7 @@ import Button from '../mini-components/button';
 import { Redirect } from 'react-router-dom';
 import { URL_LOGIN, URL_LOGIN_SOCIAL, GLOBAL_USER } from '../../tools/consts';
 import GoogleLogin from 'react-google-login';
+import FacebookLogin from 'react-facebook-login';
 import * as $ from 'jquery';
 
 import css from './login.css';
@@ -49,12 +50,31 @@ class Login extends Component {
         sessionStorage.setItem('store', serialize);
         $.get(URL_LOGIN_SOCIAL + "/" + resp.googleId).then(resp => {  
             
-            const data = JSON.stringify(resp);
-            sessionStorage.setItem(GLOBAL_USER, data);
-            this.setState({redirect: true});
+            if(resp.data === undefined)
+                this.setState({message: resp.message, redirect: false})
+            else{
+                const data = JSON.stringify(resp);
+                sessionStorage.setItem(GLOBAL_USER, data);
+                this.setState({redirect: true});
+            }
         });
         
 
+    }
+
+    faceLogin = (response) => {
+
+        $.get(URL_LOGIN_SOCIAL + '/' + response.id).then( resp => {
+            console.log(resp);
+            if(resp.data === undefined)
+                this.setState({message: resp.message})
+            else{
+                const data = JSON.stringify(resp);
+                sessionStorage.setItem(GLOBAL_USER, data);
+                this.setState({redirect: true});
+            }
+            
+        })
     }
 
     goToRegister = () => { this.setState({redirectReg: true}) }
@@ -87,7 +107,14 @@ class Login extends Component {
                                 id="google"/ >
                     </div>
                     <div className="col-6">
-                        <Button click={this.regSound} nome="SoundCloud" estilo="sound" classe="col-12"/>
+                    <FacebookLogin 
+                                appId="1748511505449819"
+                                autoLoad={false}
+                                textButton="Facebook"
+                                fields="name,email,picture"
+                                cssClass="col-12"
+                                callback={this.faceLogin}
+                            />                       
                     </div>
                         <p className="col-12">Ou entre agora com um usuário local</p>
                     <br/>
