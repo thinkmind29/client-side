@@ -24,7 +24,7 @@ export default class NavigateBar extends React.Component{
   }
 
   sair = () =>{
-    localStorage.removeItem(GLOBAL_USER);
+    sessionStorage.removeItem(GLOBAL_USER);
     this.setState({redirect: true});
   }
 

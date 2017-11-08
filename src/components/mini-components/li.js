@@ -9,7 +9,7 @@ class Li extends Component {
     }
     render() {
         
-        if(localStorage.getItem(GLOBAL_USER) === null)
+        if(sessionStorage.getItem(GLOBAL_USER) === null)
             return <div>
                         <li className="topnav-right"><Link to="/login">Sign In</Link></li>
                         <li className="topnav-right"><Link to="/register">Sign Up</Link></li>

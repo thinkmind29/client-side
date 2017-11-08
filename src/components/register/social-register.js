@@ -1,21 +1,31 @@
 import React, { Component } from 'react';
-import * as $ from 'jquery';
 import ReactDOM from 'react-dom';
-import { Redirect } from 'react-router-dom';
-import { URL_USER } from '../../tools/consts';
-import register from './register.css';
+import { Redirect } from "react-router-dom";
+import * as $ from 'jquery';
+import { URL_LOGIN_SOCIAL } from '../../tools/consts';
 
-class RegisterComponent extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {message: '', redirect: false};
+class SocailRegister extends Component {
+
+    constructor(){
+        super();
+        this.state ={
+            message: '',
+            redirect: false
+        }
     }
 
-    createUser = async (event) => {
+
+    register = (event) =>{
         event.preventDefault();
-        var deserialized = sessionStorage.getItem('cad');
-        const data = JSON.parse(deserialized);
+
+        var info = sessionStorage.getItem('reg');
+        var deserialize = JSON.parse(info);
+
+        var data = {};
+        data.city = ReactDOM.findDOMNode(this.refs.city).value;
+        data.state = ReactDOM.findDOMNode(this.refs.state).value;
+        data.nation = ReactDOM.findDOMNode(this.refs.nation).value;
         data.instagram = ReactDOM.findDOMNode(this.refs.insta).value;
         data.youtube = ReactDOM.findDOMNode(this.refs.yout).value;
         data.twitter = ReactDOM.findDOMNode(this.refs.twitter).value;
@@ -23,28 +33,21 @@ class RegisterComponent extends Component {
         data.hability = ReactDOM.findDOMNode(this.refs.hab).value;
         data.tags = [ReactDOM.findDOMNode(this.refs.style).value]
         data.biography = ReactDOM.findDOMNode(this.refs.bio).value;
-        
         console.log(data);
-        await $.ajax({
-            method: 'POST',
-            url: URL_USER,
-            data: data,
-            dataType: 'json'
-        }).then( data =>{
-           this.setState({ redirect: true});
-           localStorage.removeItem('cad');
-        }).catch(e =>{
-            this.setState({ message: e.responseJSON.message })
-        })
+        $.post(URL_LOGIN_SOCIAL, data).then(resp => {
+            const token = JSON.stringify(resp);
+            localStorage.setItem('user', token);
+            this.setState({redirect: true});
+        });
+    } 
 
 
-    }
-    
     render() {
         if(this.state.redirect)
-            return <Redirect to="/login"/>
+            <Redirect to="/user" />
         return (
-            <div className="register">
+            
+             <div className="register">
                <div className="card">
                    <br/>
                    <br/>
@@ -53,7 +56,6 @@ class RegisterComponent extends Component {
                    <form className="row">
                         <p className="col-12">Apenas mais um passo, nós fale sobre você!</p>
                         <br/>
-
                         <span>
                             <input type="text" placeholder="Twitter:" ref="twitter"/>
                         </span>
@@ -73,10 +75,19 @@ class RegisterComponent extends Component {
                             <input type="text" placeholder="Estilo Musical:" ref="style"/>
                         </span>
                         <span>
+                            <input type="text" placeholder="Cidade" ref="city"/>
+                        </span>
+                        <span>                        
+                            <input type="text" placeholder="Estado:" ref="state"/>
+                        </span>
+                        <span>                        
+                            <input type="text" placeholder="País:" ref="nation"/>
+                        </span>
+                        <span>
                             <textarea type="text" ref="bio" placeholder="Fale, um pouco sobre você, seus objetivos e projetos!"/>
                         </span>
                             <br />
-                            <button onClick={this.createUser}> Entrar </button>
+                            <button onClick={this.register}> Register </button>
                             <p>{this.state.message}</p>                                               
                     </form>
                 </div>
@@ -85,8 +96,9 @@ class RegisterComponent extends Component {
                 <br />
                 <br />
             </div>
+            
         );
     }
 }
 
-export default RegisterComponent;
+export default SocailRegister;

@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import * as $ from 'jquery';
 import ReactDOM from 'react-dom';
 import { Redirect } from 'react-router-dom';
-import { URL_USER, URL_AUTH_GOOGLE } from '../../tools/consts';
+import { URL_USER, URL_LOGIN_SOCIAL} from '../../tools/consts';
 import Button from '../mini-components/button.js';
 import register from './register.css';
 import GoogleLogin from 'react-google-login';
+import FacebookLogin from 'react-facebook-login';
 
 
 class RegisterComponent extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {message: '', redirect: false};
+        this.state = {message: '', redirect: null};
     }
 
     createUser = async (event) => {
@@ -31,26 +32,53 @@ class RegisterComponent extends Component {
         const stg = JSON.stringify(data);
         localStorage.setItem('cad', stg);
         this.setState({redirect: true});
-        this.logGoogle = this.logGoogle.bind(this);
     }
 
     
 
     regGoogle = (resp) =>{
         var token = resp.tokenId;
-        // console.log(resp.tokenId);
-        // console.log(resp);
-        $.get(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${token}`).then(user => console.log(user));
+        $.get(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${token}`).then(
+            user => {
+                console.log(user);
+                const obj = {};
+                obj.name= user.name;
+                obj.email = user.email;
+                obj.photo = user.imageUrl;
+                obj.provider = 'google';
+                obj.provider_id = user.sub;
+                console.log(obj);
+                const serialize = JSON.stringify(user);
+                sessionStorage.setItem('store', serialize);
+                this.setState({redirect: true})
+            }
+        );
+
+       
     }
 
-    logSound = (event) => {
-       
+
+    regFace = (response) => {
+        const obj = {};
+        obj.name = response.name;
+        obj.email = response.email;
+        obj.provider = 'facebook';
+        obj.photo = response.picture.data.url;
+        obj.provider_id = response.id;
+        console.log(obj);
+        this.setState({redirect: true});
+    }
+
+    regFacebooCallback = (response) => {
+        return response;
     }
     
 
     render() {
         if(this.state.redirect)
             return <Redirect to="/register-2"/>
+        if(this.state.redirect === false)
+            return <Redirect to="/social-reg" />
         return (
             <div className="register">
                <div className="card">
@@ -65,12 +93,19 @@ class RegisterComponent extends Component {
                         <GoogleLogin clientId="553870782029-nh8b1q10tap16tqbf4e24ecgrdor9r6l.apps.googleusercontent.com"
                                 buttonText="Google"
                                 className="col-12 google"
-                                onSuccess={this.logSound}
+                                onSuccess={this.regGoogle}
                                 onFailure={this.logSound} 
                                 id="google"/ >
                         </div>
                         <div className="col-6">
-                        <Button click={this.logSound} nome="SoundCloud" estilo="sound" classe="col-12"/>                           
+                            <FacebookLogin 
+                                appId="1748511505449819"
+                                autoLoad={true}
+                                fields="name,email,picture"
+                                cssClass="col-12"
+                                onclick={this.regFaceCallback}
+                               regFaceCallback={this.regFaceCallback}
+                            />                       
                         </div>
                         <p className="col-12">Ou crie agora um usuário local</p>
                         <br/>

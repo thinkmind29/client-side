@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Button from '../mini-components/button';
 import { Redirect } from 'react-router-dom';
-import { URL_LOGIN } from '../../tools/consts';
+import { URL_LOGIN, URL_LOGIN_SOCIAL, GLOBAL_USER } from '../../tools/consts';
+import GoogleLogin from 'react-google-login';
 import * as $ from 'jquery';
 
 import css from './login.css';
@@ -30,7 +31,7 @@ class Login extends Component {
                 this.setState({message: token.message, redirect: false});
          } else{
                 const data = JSON.stringify(token);
-                localStorage.setItem('user', data);
+                localStorage.setItem(GLOBAL_USER, data);
                 this.setState({redirect: true});
             }
             
@@ -38,6 +39,21 @@ class Login extends Component {
         } catch(e){
         this.setState({message: "Preencha todos os campos!"})
         }
+
+    }
+
+
+    logGoogle = (resp) =>{
+       
+        const serialize = JSON.stringify(resp.profileObj);
+        sessionStorage.setItem('store', serialize);
+        $.get(URL_LOGIN_SOCIAL + "/" + resp.googleId).then(resp => {  
+            
+            const data = JSON.stringify(resp);
+            sessionStorage.setItem(GLOBAL_USER, data);
+            this.setState({redirect: true});
+        });
+        
 
     }
 
@@ -63,7 +79,12 @@ class Login extends Component {
                 <form className="row">
                     <p className="col-12">Faça login com suas redes sociais: </p>
                     <div className="col-6">
-                        <Button click={this.regGoogle} nome="Google" estilo="google" classe="col-12"/>
+                    <GoogleLogin clientId="553870782029-nh8b1q10tap16tqbf4e24ecgrdor9r6l.apps.googleusercontent.com"
+                                buttonText="Google"
+                                className="col-12 google"
+                                onSuccess={this.logGoogle}
+                                onFailure={this.logSound} 
+                                id="google"/ >
                     </div>
                     <div className="col-6">
                         <Button click={this.regSound} nome="SoundCloud" estilo="sound" classe="col-12"/>

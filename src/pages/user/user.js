@@ -50,7 +50,7 @@ class User extends React.Component {
    componentDidMount(){
 
     try{
-        const serialized = localStorage.getItem('user');
+        const serialized = sessionStorage.getItem('user');
         const token = JSON.parse(serialized);
 
         $.ajax({
@@ -58,22 +58,43 @@ class User extends React.Component {
             url: URL_USER + token.data,
             dataType: 'json'
         }).then( data =>{
-            this.setState({
-                nome: data.name,
-                idade: data.age,
-                email: data.email,
-                habilidade: data.hability,
-                cidade: data.city,
-                estado: data.state,
-                pais: data.nation,
-                tags: data.tags,
-                insta: data.instagram,
-                twitter: data.twitter,
-                sound: data.soundCloud,
-                youtube: data.youtube,
-                bio: data.biography,
-                redirect: false
-            })
+            if(sessionStorage.getItem('store') === null)
+                this.setState({
+                    nome: data.name,
+                    idade: data.age,
+                    photo: data.photo,
+                    email: data.email,
+                    habilidade: data.hability,
+                    cidade: data.city,
+                    estado: data.state,
+                    pais: data.nation,
+                    tags: data.tags,
+                    insta: data.instagram,
+                    twitter: data.twitter,
+                    sound: data.soundCloud,
+                    youtube: data.youtube,
+                    bio: data.biography,
+                    redirect: false
+                })
+            else{
+                const log = JSON.parse(sessionStorage.getItem('store'));
+                this.setState({
+                    nome: log.name,
+                    photo: log.imageUrl,
+                    idade: data.age,
+                    habilidade: data.hability,
+                    cidade: data.city,
+                    estado: data.state,
+                    pais: data.nation,
+                    tags: data.tags,
+                    insta: data.instagram,
+                    twitter: data.twitter,
+                    sound: data.soundCloud,
+                    youtube: data.youtube,
+                    bio: data.biography,
+                    redirect: false
+                })
+            }
         })
     } catch(e){ throw e; }
 
@@ -88,11 +109,8 @@ class User extends React.Component {
         
         return (
             <div className="user">
-                    <div className="row">
-                        <Image classe="cover" photo={this.state.cover} />
-                    </div>
                     <div className="row"> 
-                        <Image classe="profile" photo={this.state.img} />
+                        <Image classe="profile" photo={this.state.photo} />
                     </div>
 
                     <div className="row">
@@ -114,7 +132,6 @@ class User extends React.Component {
                     <video width="320" height="400">
                         <source src="https://www.youtube.com/watch?v=rySTq4CdVeA"/>
                      </video>
-                        {/* <Video link="https://www.youtube.com/watch?v=rySTq4CdVeA" /> */}
                     </div>
                     <div className="row">     
                     <div className='biografia'>
