@@ -4,9 +4,6 @@ import { GLOBAL_USER } from '../../tools/consts';
 
 class Li extends Component {
 
-    constructor(props){
-        super(props);
-    }
     render() {
         
         if(sessionStorage.getItem(GLOBAL_USER) === null)

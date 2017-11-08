@@ -30,13 +30,13 @@ class RegisterComponent extends Component {
         data.nation = ReactDOM.findDOMNode(this.refs.nation).value;
 
         const stg = JSON.stringify(data);
-        localStorage.setItem('cad', stg);
+        sessionStorage.setItem('cad', stg);
         this.setState({redirect: true});
     }
 
     
 
-    regGoogle = (resp) =>{
+        regGoogle = (resp) =>{
         var token = resp.tokenId;
         $.get(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${token}`).then(
             user => {

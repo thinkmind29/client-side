@@ -5,11 +5,6 @@ import Img from '../mini-components/image.js';
 export default class SearchComponent extends React.Component{
 
 
-
-    constructor(props){
-        super(props);
-    }
-
     render(){
 
         return <ul className="scroll"> 

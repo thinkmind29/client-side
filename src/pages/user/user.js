@@ -51,7 +51,7 @@ class User extends React.Component {
     try{
         const serialized = sessionStorage.getItem('user');
         const token = JSON.parse(serialized);
-
+        
         $.ajax({
             method: 'GET',
             url: URL_USER + token.data,

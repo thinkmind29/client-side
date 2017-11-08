@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import chat from './chat.css';
+
 class Chat extends Component {
-    constructor(props){
-        super(props)
-    }
+    
     
     render() {
 

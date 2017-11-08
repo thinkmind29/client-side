@@ -10,6 +10,7 @@ import Footer  from './components/footer/footer';
 import Register from './components/register/register';
 import Register2 from './components/register/register2';
 import SocialReg from './components/register/social-register';
+import HomePage from './pages/index';
 import './App.css';
 
 class App extends Component {
@@ -20,7 +21,7 @@ class App extends Component {
 
       <div className="rotas">
           <NavigateBar />
-          <Route exact path="/" component={ Register } />
+          <Route exact path="/" component={ HomePage } />
           <Route exact path="/login" component={ Login } />
           <Route exact path="/register" component={ Register } />
           <Route exact path="/register-2" component={ Register2 } />

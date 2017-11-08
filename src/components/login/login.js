@@ -32,7 +32,7 @@ class Login extends Component {
                 this.setState({message: token.message, redirect: false});
          } else{
                 const data = JSON.stringify(token);
-                localStorage.setItem(GLOBAL_USER, data);
+                sessionStorage.setItem('store', data);
                 this.setState({redirect: true});
             }
             

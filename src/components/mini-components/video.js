@@ -6,7 +6,7 @@ class Video extends Component {
         if(this.props.link === null || this.props.link === undefined || this.props.link === "")
             return <p></p>
         else
-            <video>
+         return   <video>
                 <source src={this.props.link}/>
             </video>
     }
