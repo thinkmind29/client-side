@@ -53,7 +53,7 @@ class RegisterComponent extends Component {
                 console.log(obj);
 
                 const serialize = JSON.stringify(obj);
-                sessionStorage.setItem('store', serialize);
+                localStorage.setItem('store', serialize);
                 this.setState({redirect: false})
             }
         );
