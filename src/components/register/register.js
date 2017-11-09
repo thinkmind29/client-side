@@ -59,7 +59,7 @@ class RegisterComponent extends Component {
     }
 
 
-    regFacebookCallback = async (response) => {
+    regFacebookCallback = (response) => {
         
         let obj = {};
         obj.name = response.name;
@@ -67,12 +67,11 @@ class RegisterComponent extends Component {
         obj.provider = 'facebook';
         obj.photo = response.picture.data.url;
         obj.provider_id = response.id;
-
+        console.log(obj);
         const serialize = JSON.stringify(obj);
+        console.log(obj);
         localStorage.setItem('store', serialize);
-        await this.setState({redirect: false});
-
-
+        this.setState({redirect: false});
     }
     
 

@@ -12,10 +12,7 @@ class Footer extends Component {
                             <Image classe="footer-logo" photo={logo}/>      
                         </div>
                         <div className="col-6 people">
-                            <p>Tássio Marcos - FullStack Developer & Design UX/UI</p>
-                            <p>Fabiana Maria - Text Writer & Design UX/UI</p>
-                            <p>César Augusto - Front-End Developer & Design UX/UI</p>
-                            <p>Jonathan Silva - Design UX/UI</p>
+                            <p>Centro Universitário Una BH</p>
                         </div>
                     </div>
             </footer>
