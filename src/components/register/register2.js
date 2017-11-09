@@ -38,6 +38,7 @@ class RegisterComponent extends Component {
             this.setState({ message: e.responseJSON.message })
         })
 
+        localStorage.removeItem('store');
 
     }
     
