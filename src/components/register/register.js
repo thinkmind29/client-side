@@ -29,8 +29,8 @@ class RegisterComponent extends Component {
         data.state = ReactDOM.findDOMNode(this.refs.state).value;
         data.nation = ReactDOM.findDOMNode(this.refs.nation).value;
 
-        const stg = JSON.stringify(data);
-        sessionStorage.setItem('cad', stg);
+        const serialize = JSON.stringify(data);
+        localStorage.setItem('store', serialize);
         this.setState({redirect: true});
     }
 
@@ -48,6 +48,7 @@ class RegisterComponent extends Component {
                 obj.provider = 'google';
                 obj.provider_id = user.sub;
                 console.log(obj);
+
                 const serialize = JSON.stringify(obj);
                 sessionStorage.setItem('store', serialize);
                 this.setState({redirect: false})
@@ -68,7 +69,7 @@ class RegisterComponent extends Component {
         obj.provider_id = response.id;
 
         const serialize = JSON.stringify(obj);
-        sessionStorage.setItem('store', serialize);
+        localStorage.setItem('store', serialize);
         await this.setState({redirect: false});
 
 

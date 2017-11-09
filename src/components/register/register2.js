@@ -12,9 +12,9 @@ class RegisterComponent extends Component {
         this.state = {message: '', redirect: false};
     }
 
-    createUser = async (event) => {
+    createUser = (event) => {
         event.preventDefault();
-        var deserialized = sessionStorage.getItem('cad');
+        var deserialized = localStorage.getItem('store');
         const data = JSON.parse(deserialized);
         data.instagram = ReactDOM.findDOMNode(this.refs.insta1).value;
         data.youtube = ReactDOM.findDOMNode(this.refs.yout1).value;
@@ -25,14 +25,15 @@ class RegisterComponent extends Component {
         data.biography = ReactDOM.findDOMNode(this.refs.bio1).value;
         
         console.log(data);
-        await $.ajax({
+        $.ajax({
             method: 'POST',
             url: URL_USER,
             data: data,
             dataType: 'json'
         }).then( data =>{
+            console.log(data);
            this.setState({ redirect: true});
-           localStorage.removeItem('cad');
+           localStorage.removeItem('store');
         }).catch(e =>{
             this.setState({ message: e.responseJSON.message })
         })

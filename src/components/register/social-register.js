@@ -18,7 +18,7 @@ class SocailRegister extends Component {
     register = (event) =>{
         event.preventDefault();
 
-        var info = sessionStorage.getItem('store');
+        var info = localStorage.getItem('store');
         var data = JSON.parse(info);
 
         data.city = ReactDOM.findDOMNode(this.refs.city).value;
@@ -32,11 +32,11 @@ class SocailRegister extends Component {
         data.hability = ReactDOM.findDOMNode(this.refs.hab).value;
         data.tags = [ReactDOM.findDOMNode(this.refs.style).value]
         data.biography = ReactDOM.findDOMNode(this.refs.bio).value;
-        console.log(data);
+
         $.post(URL_REGISTER_SOCIAL, data).then(resp => {
             const token = JSON.stringify(resp);
             console.log(resp);
-            sessionStorage.setItem('user', token);   
+            localStorage.setItem('user', token);   
             this.setState({redirect: true});
         })
 

@@ -32,8 +32,8 @@ class Login extends Component {
                 this.setState({message: token.message, redirect: false});
          } else{
                 const data = JSON.stringify(token);
-                sessionStorage.setItem('store', data);
-                this.setState({redirect: true});
+                localStorage.setItem('user', data);
+                this.setState({redirect: true, message: token.data});
             }
             
         })
@@ -45,7 +45,6 @@ class Login extends Component {
 
 
     logGoogle = (resp) =>{
-       
         const serialize = JSON.stringify(resp.profileObj);
         sessionStorage.setItem('store', serialize);
         $.get(URL_LOGIN_SOCIAL + "/" + resp.googleId).then(resp => {  
@@ -54,7 +53,7 @@ class Login extends Component {
                 this.setState({message: resp.message, redirect: false})
             else{
                 const data = JSON.stringify(resp);
-                sessionStorage.setItem(GLOBAL_USER, data);
+                localStorage.setItem('user', data);
                 this.setState({redirect: true});
             }
         });
@@ -70,7 +69,7 @@ class Login extends Component {
                 this.setState({message: resp.message})
             else{
                 const data = JSON.stringify(resp);
-                sessionStorage.setItem(GLOBAL_USER, data);
+                localStorage.setItem('user', data);
                 this.setState({redirect: true});
             }
             

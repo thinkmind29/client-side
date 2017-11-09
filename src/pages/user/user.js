@@ -49,7 +49,7 @@ class User extends React.Component {
    componentDidMount(){
 
     try{
-        const serialized = sessionStorage.getItem('user');
+        const serialized = localStorage.getItem('user');
         const token = JSON.parse(serialized);
         
         $.ajax({
@@ -57,7 +57,6 @@ class User extends React.Component {
             url: URL_USER + token.data,
             dataType: 'json'
         }).then( data =>{
-            if(sessionStorage.getItem('store') === null)
                 this.setState({
                     nome: data.name,
                     idade: data.age,
@@ -75,25 +74,6 @@ class User extends React.Component {
                     bio: data.biography,
                     redirect: false
                 })
-            else{
-                const log = JSON.parse(sessionStorage.getItem('store'));
-                this.setState({
-                    nome: log.name,
-                    photo: log.photo,
-                    idade: data.age,
-                    habilidade: data.hability,
-                    cidade: data.city,
-                    estado: data.state,
-                    pais: data.nation,
-                    tags: data.tags,
-                    insta: data.instagram,
-                    twitter: data.twitter,
-                    sound: data.soundCloud,
-                    youtube: data.youtube,
-                    bio: data.biography,
-                    redirect: false
-                })
-            }
         })
     } catch(e){ throw e; }
 
@@ -115,6 +95,7 @@ class User extends React.Component {
                         <Social img={twitter} link={`https://twitter.com/${this.state.twitter}`} classe="badge" cl="linkSocial"/>
                         <Social img={sound} link={`https://soundcloud.com/${this.state.sound}`} classe="badge" cl="linkSocial"/>
                         <Social img={yout} link={`https://youtube.com/${this.state.youtube}`} classe="badge" cl="linkSocial"/>
+                        <p>{this.state.nome}</p>
                         <p>{this.state.habilidade}</p>
                         <p>{this.state.tags} </p>
                         <p>{this.state.cidade}, {this.state.pais}</p>
