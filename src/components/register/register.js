@@ -10,7 +10,7 @@ import FacebookLogin from 'react-facebook-login';
 
 
 class RegisterComponent extends Component {
-
+ 
     constructor(props) {
         super(props);
         this.state = {message: '', redirect: null};
@@ -37,14 +37,17 @@ class RegisterComponent extends Component {
     
 
         regGoogle = (resp) =>{
+
         var token = resp.tokenId;
+        console.log(resp);
+
         $.get(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${token}`).then(
             user => {
                 console.log(user);
                 let obj = {};
                 obj.name= user.name;
                 obj.email = user.email;
-                obj.photo = user.imageUrl;
+                obj.photo = user.picture;
                 obj.provider = 'google';
                 obj.provider_id = user.sub;
                 console.log(obj);
@@ -65,7 +68,7 @@ class RegisterComponent extends Component {
         obj.name = response.name;
         obj.email = response.email;
         obj.provider = 'facebook';
-        obj.photo = response.picture;
+        obj.photo = response.picture.data.url;
         obj.provider_id = response.id;
         console.log(obj);
         const serialize = JSON.stringify(obj);

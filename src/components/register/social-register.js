@@ -38,7 +38,7 @@ class SocailRegister extends Component {
             console.log(resp);
             localStorage.setItem('user', token);   
             this.setState({redirect: true});
-        })
+        }).catch(e => console.log( e))
 
         
     } 
