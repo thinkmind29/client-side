@@ -65,7 +65,7 @@ class RegisterComponent extends Component {
         obj.name = response.name;
         obj.email = response.email;
         obj.provider = 'facebook';
-        obj.photo = response.picture.data.url;
+        obj.photo = response.picture;
         obj.provider_id = response.id;
         console.log(obj);
         const serialize = JSON.stringify(obj);
