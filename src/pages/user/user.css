@@ -93,3 +93,7 @@ div.atributos p{
 .information{
   padding: 0;
 }
+
+.biografia p {
+  text-align: justify;
+}
