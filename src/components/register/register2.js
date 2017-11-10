@@ -3,7 +3,7 @@ import * as $ from 'jquery';
 import ReactDOM from 'react-dom';
 import { Redirect } from 'react-router-dom';
 import { URL_USER } from '../../tools/consts';
-import register from './register.css';
+import './register.css';
 
 class RegisterComponent extends Component {
 

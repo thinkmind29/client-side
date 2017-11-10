@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { Redirect } from 'react-router-dom';
 import { URL_USER, URL_LOGIN_SOCIAL} from '../../tools/consts';
 import Button from '../mini-components/button.js';
-import register from './register.css';
+import './register.css';
 import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 

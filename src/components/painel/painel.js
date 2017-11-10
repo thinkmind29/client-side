@@ -1,8 +1,9 @@
 import React from 'react';
-import search from './painel.css';
+import './painel.css';
 import Img from '../mini-components/image.js';
 
 export default class SearchComponent extends React.Component{
+
 
 
     render(){

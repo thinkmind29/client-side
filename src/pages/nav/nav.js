@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import nav from './nav.css';
+import './nav.css';
 import { Link, Redirect } from 'react-router-dom';
 import Li from '../../components/mini-components/li';
 import { GLOBAL_USER } from '../../tools/consts';
@@ -36,7 +36,7 @@ export default class NavigateBar extends React.Component{
         <ul className="topnav" ref="dropdownClick">
           <li><Link to="/">Musically</Link></li>
           <li className="dropdownIcon"><a onClick={this.dropdownMenu} href="javascript:void(0)">&#9776;</a></li>
-          <Li sair={this.sair} />
+          <Li />
         </ul>
         </nav> 
       ) 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Painel from '../../components/painel/painel';
 import Chat from '../../components/mini-components/mensagens';
 import Button from '../../components/mini-components/button';
-import message from './message.css';
+import './message.css';
 import * as $ from 'jquery';
 import { URL_USER } from '../../tools/consts';
 

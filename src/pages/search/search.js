@@ -4,7 +4,7 @@ import * as $ from 'jquery';
 import Button from '../../components/mini-components/button';
 import { URL_USER } from '../../tools/consts';
 import PainelComponent from '../../components/painel/painel';
-import search from './search.css';
+import './search.css';
 
 class SearchPage extends Component {
     
@@ -56,7 +56,9 @@ class SearchPage extends Component {
 
     }
     
-    
+    handleClick = (object) => {
+        console.log(object);
+    }
     
     render() {
         return (
@@ -78,11 +80,11 @@ class SearchPage extends Component {
                         </select>
                         <input type="search" placeholder="Pesquisar" ref="word" />
                         <Button click={this.search} nome="pesquisar" />
-                        <PainelComponent person={this.state.searcheds} />
+                        <PainelComponent person={this.state.searcheds} click={this.handleClick}/>
                     </div>
                     <div className="col-4 closer">
                         <p>Cantores parecidos comigo</p>
-                        <PainelComponent person={this.state.persons} />
+                        <PainelComponent person={this.state.persons} click={this.handleClick}/>
                     </div>
                     
                 </div>

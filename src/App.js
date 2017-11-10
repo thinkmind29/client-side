@@ -13,6 +13,7 @@ import SocialReg from './components/register/social-register';
 import './App.css';
 
 class App extends Component {
+
   render() {
     return (
     
@@ -20,14 +21,14 @@ class App extends Component {
 
       <div className="rotas">
           <NavigateBar />
-          <Route exact path="/" component={ Login } />
-          <Route exact path="/login" component={ Login } />
-          <Route exact path="/register" component={ Register } />
-          <Route exact path="/register-2" component={ Register2 } />
-          <Route exact path="/social-reg" component={ SocialReg } />
-          <Route exact path="/user" component={ User } />
-          <Route exact path="/message" component={ Message } />
-          <Route exact path="/search" component={ Search } />
+              <Route exact path="/" component={ Login } />
+              <Route exact path="/login" component={ Login } />
+              <Route exact path="/register" component={ Register } />
+              <Route exact path="/register-2" component={ Register2 } />
+              <Route exact path="/social-reg" component={ SocialReg } />
+              <Route exact path="/user" component={ User } />
+              <Route exact path="/message" component={ Message } />
+              <Route exact path="/search" component={ Search } />
           <Footer />
       </div> 
 

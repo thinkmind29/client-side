@@ -13,7 +13,7 @@ class Li extends Component {
                    </div>
         else
             return <div>
-                        <li className="topnav-right" onClick={this.props.sair}><Link to='/'>Sair</Link></li>
+                        <li className="topnav-right"><Link to='/user'>Página Inicial</Link></li>
                         <li className="topnav-right"><Link to="/search">Pesquisar</Link></li>
                         <li className="topnav-right"><Link to="/message">Mensagens</Link></li>
                     </div>
