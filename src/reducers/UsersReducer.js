@@ -1,6 +1,6 @@
 const INITIAL_STATE = {
     user: [],
-    selected: null,
+    users: [],
 }
 
 export default (state = INITIAL_STATE, action) =>{
@@ -8,7 +8,7 @@ export default (state = INITIAL_STATE, action) =>{
         case 'GET_USER':
             return { ...state, user: action.payload.data };
         case 'SEARCH_USER':
-            return { ...state, selected: action.payload.data };
+            return { users: action.payload.data };
         default:
             return state
     }
