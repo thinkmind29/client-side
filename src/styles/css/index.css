@@ -1,0 +1,185 @@
+@charset "UTF-8";
+/* Imports */
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+/* Variaveis */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body, html, .social {
+  width: 100%;
+  font-family: "Nunito", sanserif; }
+
+/* APP */
+body, html, .rotas, .center, #root, .social {
+  height: 100%; }
+
+nav,
+header,
+footer,
+form span {
+  display: block; }
+
+/* GRID */
+.col-1 {
+  width: 8.33%; }
+
+.col-2 {
+  width: 16.66%; }
+
+.col-3 {
+  width: 25%; }
+
+.col-4 {
+  width: 33.33%; }
+
+.col-5 {
+  width: 41.66%; }
+
+.col-6 {
+  width: 50%; }
+
+.col-7 {
+  width: 58.33%; }
+
+.col-8 {
+  width: 66.66%; }
+
+.col-9 {
+  width: 75%; }
+
+.col-10 {
+  width: 83.33%; }
+
+.col-11 {
+  width: 91.66%; }
+
+.col-12 {
+  width: 100%; }
+
+[class*="col-"] {
+  float: left;
+  padding: 15px; }
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table; }
+
+.center-box, .center, .social {
+  -webkit-align-items: center;
+  align-items: center;
+  -web-justify-content: center;
+  justify-content: center;
+  display: -webkit-inline-flex;
+  justify-content: center;
+  align-content: center; }
+
+h1, h2, h3, h4, h5, h6, p {
+  text-align: center; }
+
+a {
+  text-decoration: none; }
+
+input, button, label, textarea, select {
+  border: none;
+  margin: 10px;
+  display: inline;
+  background-color: transparent;
+  font-family: "Nunito", sanserif; }
+
+input, textarea {
+  border-bottom: 1px solid purple;
+  width: 95%; }
+
+input:focus, textarea:focus {
+  border: none;
+  border-bottom: 3px solid purple; }
+
+p {
+  text-transform: capitalize; }
+
+button {
+  width: 150px;
+  padding: 10px;
+  color: white;
+  background: purple; }
+
+#root {
+  min-height: 100%; }
+
+form {
+  box-shadow: 1px 1px 1px gray;
+  padding: 40px;
+  background-color: #fac2c2; }
+
+.center {
+  min-height: 100%;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column; }
+
+.google {
+  background-color: red; }
+
+#sound {
+  background-color: #ff8800; }
+
+@media (max-width: 768px) {
+  [class*='col-'], button, input, .user {
+    width: 100%; }
+  .user {
+    margin: 0; } }
+
+/* Tela de Login */
+/* Página do usuário */
+.user {
+  width: 75%;
+  background-color: purple;
+  margin-left: 14.5%;
+  margin-bottom: 0%; }
+
+.profile {
+  width: 200px;
+  height: 200px;
+  /* margin:50px margin-left: 10% */
+  border-radius: 200px; }
+
+div.atributos p {
+  text-align: left;
+  text-transform: capitalize; }
+
+.social {
+  display: inline-flex;
+  flex-direction: row; }
+
+.badge {
+  display: inline-flex;
+  height: 25px;
+  width: 25px;
+  margin: 0px 5px;
+  justify-content: center;
+  align-content: center; }
+
+.init {
+  margin-left: 10%; }
+
+.biografia {
+  padding: 20px;
+  text-align: justify; }
+
+.icons {
+  width: 15px;
+  height: 15px; }
+
+.container {
+  padding: 5px;
+  height: auto;
+  min-height: 100%; }
+
+.container p {
+  text-transform: capitalize;
+  padding: 5px;
+  text-align: left;
+  margin-left: 15px; }

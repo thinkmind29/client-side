@@ -5,7 +5,9 @@ import FacebookLogin from 'react-facebook-login';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Redirect } from  'react-router-dom';
+
 import { login } from '../actions';
+import { googleKey, facebookId } from '../tools/keys';
 import Button from './button';
 
 class Login extends Component {
@@ -15,14 +17,14 @@ class Login extends Component {
         this.state = {redirect: false};
     }
 
-    requestLogin = () => {
-
+    requestLogin = (event) => {
+        
+        event.preventDefault();
         const data = {};
         data.email = ReactDOM.findDOMNode(this.refs.email).value;
         data.password = ReactDOM.findDOMNode(this.refs.senha).value;
         data.type = "LOCAL";       
-        this.props.login(data);
-        this.setState({redirect: true});        
+        this.props.login(data);       
         
     }
 
@@ -32,7 +34,7 @@ class Login extends Component {
         data.id = response.id;
         data.type = "FACEBOOK";
         this.props.login(data);
-        this.setState({redirect: true});
+
     }
 
     requestGoogle = (response) => {
@@ -40,36 +42,60 @@ class Login extends Component {
         const data = {};
         data.id = response.googleId;
         data.type = 'GOOGLE';
-        console.log(data);
-        this.setState({redirect: true})        
+        console.log(data);    
 
+    }
+
+    register = () => {
+        this.setState({ redirect: true })
     }
     
 
     render() {
+
+        if(this.state.redirect)
+            return <Redirect to="/register" />
+
         if(this.props.token !== "")
            return <Redirect to={{pathname: '/user', state :{token: this.props.token}}} />
 
-        return <div>
-                    <GoogleLogin 
-                                clientId="553870782029-nh8b1q10tap16tqbf4e24ecgrdor9r6l.apps.googleusercontent.com"
-                                buttonText="Google"
-                                className="col-12 google"
-                                onSuccess={this.requestGoogle}
-                                onFailure={this.requestGoogle} 
-                                id="google"
-                            />
-                     <FacebookLogin 
-                                appId="1748511505449819"
-                                autoLoad={false}
-                                textButton="Facebook"
-                                fields="name,email,picture"
-                                cssClass="col-12"
-                                callback={this.requestFacebook}
-                            />  
-                     <input type="email" placeholder="Email: " ref='email'/>
-                     <input type="password" placeholder="Senha: " ref='senha'/>
-                     <Button click={this.requestLogin} name="Login"/>
+        return <div className="register">
+                    <div className="card">
+                        <form className="row">
+                            <p className="col-12">Faça login com suas redes sociais: </p>
+                            <div className="col-6">
+                                <GoogleLogin 
+                                            clientId={ googleKey }
+                                            buttonText="Google"
+                                            className="col-12 google"
+                                            onSuccess={this.requestGoogle}
+                                            onFailure={this.requestGoogle} 
+                                            id="google"
+                                        />
+                            </div>
+                            <div className="col-6">
+                                <FacebookLogin 
+                                            appId={ facebookId }
+                                            autoLoad={false}
+                                            textButton="Facebook"
+                                            fields="name,email,picture"
+                                            cssClass="col-12"
+                                            callback={this.requestFacebook}
+                                        />  
+                            </div>
+                            <p className="col-12">Ou entre agora com um usuário local</p>
+                            <span>
+                                <input type="email" placeholder="Email: " ref='email'/>
+                            </span>
+                            <span>
+                                <input type="password" placeholder="Senha: " ref='senha'/>
+                            </span>
+                            <span>
+                                <Button click={this.requestLogin} name="Login"/>
+                            </span>
+                        <p>Não tem uma conta? <a onClick={this.goToRegister} href="javascript:void(0)">Cadastre-se</a></p> 
+                        </form>
+                    </div>
                </div>
     }
 

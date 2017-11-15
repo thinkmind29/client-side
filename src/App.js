@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import ReduxPromise from 'redux-promise';
 import reducers from './reducers';
 import Routes from './Routes';
-import './App.css';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 const store = createStoreWithMiddleware(reducers);
