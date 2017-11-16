@@ -8,7 +8,7 @@ const Painel = ({ item }) => {
     return <li>
                 <div className="row">       
                     <div className="col-2">
-                        <Image photo={photo} />
+                        <Image photo={photo} classe="badge" />
                     </div>
                     <div className="col-8">
                         <p> {name}</p>

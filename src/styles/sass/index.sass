@@ -6,11 +6,10 @@
 $mobile-screen: 768px
 $primary-color: purple
 $second-color: white
+$third-color: black
+$navbar-color: cyan
 $form-color: rgb(250, 194, 194)
 $font-primary: 'Nunito', sanserif
-
-
-
 
 
 *
@@ -18,7 +17,7 @@ $font-primary: 'Nunito', sanserif
     padding: 0
     box-sizing: border-box
 
-body, html, .social
+body, html, .social, nav
     width: 100%
     font-family: $font-primary
 
@@ -30,9 +29,16 @@ body, html, .rotas, .center, #root, .social
 nav, 
 header, 
 footer,
-form span
+form span,
+ul.topnav li a
     display: block
 
+.user, 
+.message, 
+.search
+    width: 75%
+    background-color: $second-color
+    margin-left: 14.5%
 
 /* GRID */
 
@@ -115,6 +121,9 @@ button
     color: white
     background: $primary-color
 
+li
+    list-style: none
+
 #root
     min-height: 100%;
 
@@ -141,10 +150,68 @@ form
    background-color: rgb(255, 136, 0)
 
 @media (max-width: $mobile-screen)
-    [class*='col-'], button, input, .user
+    [class*='col-'], button, input, .user, .closer, .search
         width: 100%
-    .user
-        margin: 0
+
+
+    ul.topnav li:not(:nth-child(1)) 
+        display: none
+     
+    ul.topnav li.dropdownIcon 
+        display: block
+        float: right
+      
+    ul.topnav.responsive li.dropdownIcon
+        position: absolute
+        top: 0
+        right: 0
+      
+    ul.topnav.responsive 
+        position: relative
+      
+    ul.topnav.responsive li
+        display: inline
+        float: none
+      
+    ul.topnav.responsive li a 
+        display: block
+        text-align: left
+    
+
+
+
+/* NavBar */
+nav
+    margin: 0
+    box-shadow: 1px 1px 1px $third-color
+
+nav ul
+    background-color: $primary-color
+    overflow: hidden
+
+ul.topnav li
+    float: left
+
+ul.topnav li.topnav-right
+    float: right
+
+ul.topnav li a
+    text-decoration: none
+    min-height:  16px
+    text-align: center
+    padding: 14px
+    text-transform: uppercase
+    color: $second-color
+
+
+ul.topnav li a:hover
+    background-color: $navbar-color
+    color: $third-color
+
+ul.topnav li.dropdownIcon
+    display: none
+
+
 
 
 /* Tela de Login */
@@ -155,9 +222,6 @@ form
 /* Página do usuário */
 
 .user
-    width: 75%
-    background-color: $primary-color
-    margin-left: 14.5%
     margin-bottom: 0%
 
 .profile
@@ -209,5 +273,68 @@ div.atributos p
 
 
 
+/* Footer */
+
+footer
+    background-color: purple
+    color: white    
+    margin: 0
+
+footer p
+    padding: 2px
+    margin: 0px
+    text-align: right
+
+.footer-logo
+    height: 25%
+    width: 25%
+
+.people
+    margin-top: 3%;
 
 
+/* Search Page */
+
+.search
+    height: auto
+
+j
+    color: purple;
+    font-weight: bolder
+
+.closer
+    background-color: rgb(236, 197, 197)
+    margin: 2% 0% 2% 0%
+
+.title
+    padding: 5px;
+    font-size: 20px;
+
+
+/* Message Page */
+.message div.aside
+    border-left: 1px solid grey
+
+.message div.side div
+    border-bottom: 1px solid gray
+    margin-right: 0
+
+.remetente, .destinatario
+    margin-bottom: 10px
+    border-radius: 10px
+    padding: 0px 10px
+
+.destinatario
+    width: 50%
+    background-color: rgb(214, 172, 172)
+
+.remetente
+    width: 50%
+    margin-left: 50%
+    background-color: purple
+    
+.remetente p
+    text-align: right
+
+.destinatario p
+    text-align: left

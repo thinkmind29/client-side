@@ -12,12 +12,24 @@ export const fetchUser = (token) => {
     }
 }
 
-export const searchUser = (param, param2) => {
-    const request = axios.get(`${REQUEST_URL}/${param}/${param2}`)
-    return{
-        type: 'SEARCH_USER',
-        payload: request
+export const searchUser = (type, param, param2,) => {
+    switch(type){
+        case 'SEARCH':
+            const request = axios.get(`${REQUEST_URL}/${param}/${param2}`)
+            return{
+                type: 'SEARCH_USER',
+                payload: request
+            }
+        case 'GET':
+            const request_user = axios.get(REQUEST_URL);
+            return{
+                type: 'SEARCH_USER_TAG',
+                payload: request_user
+            }
+        default:
+            return null
     }
+    
 }
 
 
