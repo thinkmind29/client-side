@@ -35,7 +35,7 @@ class UserPage extends Component {
                 tags, twitter, city
          } = user;
 
-       if(!this.props.user)
+       if(!user)
             return <p>Loading...</p>
 
         return (
@@ -59,7 +59,7 @@ class UserPage extends Component {
                         </div>
 
                         <div className="col-9 information">
-                        <iframe width="100%" height="450" src="https://www.youtube.com/embed/YelUX18albY" frameborder="0" allowfullscreen></iframe>
+                        <iframe width="100%" height="450" src="https://www.youtube.com/embed/YelUX18albY"></iframe>
                         <div className='biografia'>
                             <h1>Sobre Mim</h1>
                             <p>

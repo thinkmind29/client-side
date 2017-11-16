@@ -9,6 +9,8 @@ $second-color: white
 $third-color: black
 $navbar-color: cyan
 $form-color: rgb(250, 194, 194)
+$message-color: gray
+$destinatario-color: #d6acac
 $font-primary: 'Nunito', sanserif
 
 
@@ -150,7 +152,13 @@ form
    background-color: rgb(255, 136, 0)
 
 @media (max-width: $mobile-screen)
-    [class*='col-'], button, input, .user, .closer, .search
+    [class*='col-'], 
+    button, 
+    input, 
+    .user, 
+    .closer, 
+    .search,
+    .register
         width: 100%
 
 
@@ -276,8 +284,8 @@ div.atributos p
 /* Footer */
 
 footer
-    background-color: purple
-    color: white    
+    background-color: $primary-color
+    color: $second-color
     margin: 0
 
 footer p
@@ -299,11 +307,11 @@ footer p
     height: auto
 
 j
-    color: purple;
+    color: $primary-color
     font-weight: bolder
 
 .closer
-    background-color: rgb(236, 197, 197)
+    background-color: $primary-color
     margin: 2% 0% 2% 0%
 
 .title
@@ -313,10 +321,10 @@ j
 
 /* Message Page */
 .message div.aside
-    border-left: 1px solid grey
+    border-left: 1px solid $message-color
 
 .message div.side div
-    border-bottom: 1px solid gray
+    border-bottom: 1px solid $message-color
     margin-right: 0
 
 .remetente, .destinatario
@@ -326,15 +334,21 @@ j
 
 .destinatario
     width: 50%
-    background-color: rgb(214, 172, 172)
+    background-color: $destinatario-color
 
 .remetente
     width: 50%
     margin-left: 50%
-    background-color: purple
+    background-color: $primary-color
     
 .remetente p
     text-align: right
 
 .destinatario p
     text-align: left
+
+/* Register Page */
+
+.register
+    width: 50%;
+    margin-left: 25%;

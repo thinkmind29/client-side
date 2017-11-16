@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 let a = 0;
 const Chat = ({ message }) => {

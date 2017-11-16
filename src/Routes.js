@@ -4,6 +4,7 @@ import Login from './components/login';
 import User from './components/user';
 import Search from './components/search';
 import Chat from './components/message';
+import Register from './components/register';
 import Nav from './components/nav';
 import Footer from './components/footer';
 
@@ -16,6 +17,7 @@ const Routes = () => {
                     <Route path="/user" component={ User } />
                     <Route path="/search" component={ Search } />
                     <Route path="/message" component={ Chat } />
+                    <Route path="/register" component={ Register } />
                     <Footer />
                 </div>
             </Router>
