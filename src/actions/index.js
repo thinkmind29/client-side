@@ -68,16 +68,26 @@ export const register = (type, data) => {
             case 'LOCAL':
                 const request = axios.post(REQUEST_URL, data);
                 return {
-                    type: 'LOCAL',
+                    type: 'REGISTER',
                     payload: request
                 }
             case 'FACEBOOK':
-                const request_facebook = axios.post(`${REQUEST_URL}/auth`, data)
+                const request_facebook = axios.post(`${REQUEST_URL}/registerSocial`, data)
+                return{
+                    type: 'REGISTER',
+                    payload: request_facebook
+                }
             case 'GOOGLE':
-                const request_google = axios.post(`${REQUEST_URL}/auth`, data)
-                return 3
+                const request_google = axios.post(`${REQUEST_URL}/registerSocial`, data)
+                return {
+                    type: 'REGISTER',
+                    payload: request_google
+                }
             default:
-                return 4
+                return {
+                    type: 'REGISTER',
+                    payload: []
+                }
         }
 
 }

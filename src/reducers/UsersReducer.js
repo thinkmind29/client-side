@@ -2,6 +2,8 @@ const INITIAL_STATE = {
     user: [],
     tag_user: [],
     users: [],
+    message: '',
+    token: '',
 }
 
 export default (state = INITIAL_STATE, action) =>{
@@ -12,6 +14,8 @@ export default (state = INITIAL_STATE, action) =>{
             return { ...state, users: action.payload.data };
         case 'SEARCH_USER_TAG':
             return { ...state, tag_user: action.payload.data };
+        case 'REGISTER':
+            return { ...state, token: action.payload.data.data, message: action.payload.data.message }
         default:
             return state
     }

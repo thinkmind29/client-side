@@ -29,21 +29,19 @@ class Login extends Component {
     }
 
     requestFacebook = (response) => {
-        
-        const data = {};
-        data.id = response.id;
-        data.type = "FACEBOOK";
+        const data = {
+            id: response.id,
+            type: 'FACEBOOK'
+        };
         this.props.login(data);
-
     }
 
     requestGoogle = (response) => {
-
-        const data = {};
-        data.id = response.googleId;
-        data.type = 'GOOGLE';
-        console.log(data);    
-
+        const data = {
+            id: response.googleId,
+            type: 'GOOGLE'
+        };
+        this.props.login(data);
     }
 
     register = () => {
@@ -53,10 +51,7 @@ class Login extends Component {
 
     render() {
 
-        if(this.state.redirect)
-            return <Redirect to="/register" />
-
-        if(this.props.token !== "")
+        if(this.props.token !== "" && this.props.token !== undefined)
            return <Redirect to={{pathname: '/user', state :{token: this.props.token}}} />
 
         return <div className="register">
@@ -92,8 +87,11 @@ class Login extends Component {
                             </span>
                             <span>
                                 <Button click={this.requestLogin} name="Login"/>
+                                {/* <p>{this.props.login.message}</p> */}
                             </span>
-                        <p>Não tem uma conta? <a onClick={this.goToRegister} href="javascript:void(0)">Cadastre-se</a></p> 
+                        <p>Não tem uma conta? <a onClick={this.register} href="javascript:void(0)">Cadastre-se</a></p>
+                        <p>{this.props.message}</p>
+                        
                         </form>
                     </div>
                </div>
@@ -103,7 +101,7 @@ class Login extends Component {
 
 
 const mapStateToProps = (state) => {
-    return { login: state, token: state.login.token }
+    return { login: state, token: state.login.token, message: state.login.message }
 };
 const mapDispatchToProps = (dispatch) =>{
     return bindActionCreators({ login }, dispatch)
