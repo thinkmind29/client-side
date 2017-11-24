@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const REQUEST_URL = 'https://musically.herokuapp.com/user';
+const id = sessionStorage.getItem('chat');
 
 
 export const fetchUser = (token) => {
@@ -90,5 +91,19 @@ export const register = (type, data) => {
                 }
         }
 
+}
+
+export const chat =  (type, data) => {
+
+    switch(type){
+        case 'POST_SEND':
+            const request =  axios.post('http://localhost:5000/chat', data);
+        case 'GET':
+            const request_get = axios.get(`http://localhost:5000/chat/${data.remetente_id}/${data.destinatario_id}`);  
+            return{
+                type: 'GET',
+                payload: request_get
+            }
+    }
 }
 

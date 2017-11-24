@@ -15,6 +15,7 @@ class NavBar extends React.Component {
             <ul className="topnav" ref="dropdownClick">
               <li><Link to="/">Musically</Link></li>
               <li className="dropdownIcon"><a onClick={this.dropdownMenu} href="javascript:void(0)">&#9776;</a></li>
+              <li><Link to='search'>Pesquisar</Link></li>
               {/* <Li /> */}
             </ul>
             </nav> 

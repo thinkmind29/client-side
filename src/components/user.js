@@ -18,33 +18,39 @@ class UserPage extends Component {
    
     constructor(props){
         super(props);
-        localStorage.setItem('user', props.location.state.token);
+        if(localStorage.getItem('user') === undefined || localStorage.getItem('user') === null)
+            localStorage.setItem('user', props.location.state.token);
         this.state = {id: localStorage.getItem('user')}
     }
 
    componentDidMount() {
      this.props.fetchUser(this.state.id);
    }
+
    
    render() {
 
+        
         const { user } = this.props.user;
         const { name, photo, biography, 
                 instagram, youtube, soundCloud,
                 age, hability, state,
-                tags, twitter, city
+                tags, twitter, city, _id
          } = user;
+         
+         sessionStorage.setItem('chat', _id);
+         
 
        if(!user)
             return <p>Loading...</p>
 
         return (
-            <div>
+            <div>         
                 <div className="user">
                     <div className="row">    
                         <div className="col-3  container">
                             <Image classe="profile social" photo={ photo } />
-                            <p> { name }, { age } anos </p>
+                            <p> { name }, { age }, anos </p>
 
                             <div className="social">
                                 <Social img={insta} link={`https://instagram.com/${ instagram }`} classe="badge" />

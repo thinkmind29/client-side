@@ -53,6 +53,8 @@ class Login extends Component {
 
         if(this.props.token !== "" && this.props.token !== undefined)
            return <Redirect to={{pathname: '/user', state :{token: this.props.token}}} />
+        if(this.state.redirect)
+            return <Redirect to='/register' />
 
         return <div className="register">
                     <div className="card">
