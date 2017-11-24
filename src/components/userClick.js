@@ -19,7 +19,6 @@ class UserPageClick extends Component {
    
     constructor(props){
         super(props);
-        alert(props.id);
         this.state = { id: props.id, redirect: false }
     }
 
