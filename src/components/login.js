@@ -52,7 +52,8 @@ class Login extends Component {
     render() {
 
         if(this.props.token !== "" && this.props.token !== undefined)
-           return <Redirect to={{pathname: '/user', state :{token: this.props.token}}} />
+               return <Redirect to='/user' />
+        //    return <Redirect to={{pathname: '/user', state :{token: this.props.token}}} />
         if(this.state.redirect)
             return <Redirect to='/register' />
 
@@ -65,8 +66,8 @@ class Login extends Component {
                                             clientId={ googleKey }
                                             buttonText="Google"
                                             className="col-12 google"
-                                            onSuccess={this.requestGoogle}
-                                            onFailure={this.requestGoogle} 
+                                            onSuccess={() => this.requestGoogle}
+                                            onFailure={() => this.requestGoogle} 
                                             id="google"
                                         />
                             </div>
@@ -103,6 +104,8 @@ class Login extends Component {
 
 
 const mapStateToProps = (state) => {
+    // alert(state.login.token);
+    localStorage.setItem('user', state.login.token)
     return { login: state, token: state.login.token, message: state.login.message }
 };
 const mapDispatchToProps = (dispatch) =>{

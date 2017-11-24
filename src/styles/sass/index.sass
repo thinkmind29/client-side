@@ -3,12 +3,13 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito')
 
 /* Variaveis */
-$mobile-screen: 768px
-$primary-color: purple
+$mobile-screen: 560px
+$tablet-screen: 750px;
+$primary-color: blue
 $second-color: white
 $third-color: black
 $navbar-color: cyan
-$form-color: rgb(250, 194, 194)
+$form-color: white
 $message-color: gray
 $destinatario-color: #d6acac
 $font-primary: 'Nunito', sanserif
@@ -26,7 +27,20 @@ body, html, .social, nav
 /* APP */
 body, html, .rotas, .center, #root, .social
     height: 100%
- 
+
+.links
+    position: absolute
+    top: 75%
+
+.links a
+    width: 200px
+    padding: 15px
+    text-align: center
+    background: $navbar-color
+    color: $third-color
+    margin: 5px
+    margin-top: 20px
+
 
 nav, 
 header, 
@@ -35,13 +49,19 @@ form input,
 ul.topnav li a
     display: block
 
+
 .user, 
 .message, 
 .search
     width: 75%
     background-color: $second-color
+    margin: 5% 0;
     margin-left: 14.5%
-
+.user
+    width: 100%
+    margin: 0    
+.invisible
+    display: none
 /* GRID */
 
 .col-1 
@@ -151,39 +171,7 @@ form
 #sound
    background-color: rgb(255, 136, 0)
 
-@media (max-width: $mobile-screen)
-    [class*='col-'], 
-    button, 
-    input, 
-    .user, 
-    .closer, 
-    .search,
-    .register
-        width: 100%
 
-
-    ul.topnav li:not(:nth-child(1)) 
-        display: none
-     
-    ul.topnav li.dropdownIcon 
-        display: block
-        float: right
-      
-    ul.topnav.responsive li.dropdownIcon
-        position: absolute
-        top: 0
-        right: 0
-      
-    ul.topnav.responsive 
-        position: relative
-      
-    ul.topnav.responsive li
-        display: inline
-        float: none
-      
-    ul.topnav.responsive li a 
-        display: block
-        text-align: left
     
 
 
@@ -202,6 +190,7 @@ ul.topnav li
 
 ul.topnav li.topnav-right
     float: right
+    display: none
 
 ul.topnav li a
     text-decoration: none
@@ -233,9 +222,11 @@ ul.topnav li.dropdownIcon
     margin-bottom: 0%
 
 .profile
+    display: flex;
     width: 200px
     height: 200px
-    /* margin:50px margin-left: 10% */
+    -ms-justify-content: center;
+    min-height: 100%;
     border-radius: 200px
 
 div.atributos p
@@ -250,11 +241,12 @@ div.atributos p
   
 .badge
   display: inline-flex
-  height: 25px
-  width: 25px
-  margin: 0px 5px
+  height: 30px
+  width: 30px
+  border-radius: 25px;
   justify-content: center
   align-content: center
+  margin: 15px   
 
 .init
     margin-left: 10%
@@ -268,9 +260,13 @@ div.atributos p
     height: 15px;
 
 .container
-  padding: 5px;
+
   height: auto;
-  min-height: 100%;
+  min-height: 100%
+  display: inline-flex;
+  flex-direction: column
+  justify-content: center;
+  align-items: center;
 
 
 .container p 
@@ -306,12 +302,22 @@ footer p
 .search
     height: auto
 
+.busca
+    overflow-y: scroll
+
+.container-msg
+    overflow-y: scroll
+    height: 300px
+
 j
     color: $primary-color
     font-weight: bolder
 
 .closer
     background-color: $primary-color
+    height: 800px
+    overflow-x: scroll
+    overflow-y: hidden
     margin: 2% 0% 2% 0%
 
 .title
@@ -350,5 +356,108 @@ j
 /* Register Page */
 
 .register
-    width: 50%;
-    margin-left: 25%;
+    width: 30%;
+    margin: 2% 0;
+    margin-left: 35%;
+.none
+    display: none
+
+li.painel p
+    text-align: left;
+
+
+@media  (max-width: $mobile-screen)
+    [class*='col-'], 
+    button, 
+    input, 
+    .user, 
+    .closer, 
+    .search,
+    .register,
+    .message,
+    iframe,
+    .busca,
+    .title,
+    textarea
+        width: 100%
+
+    .none
+        display: inline-block
+    .links
+        display: none
+    col-sm-2
+        width: 16.66%
+    col-sm-8
+        width: 66.66%
+
+    .register, 
+    .user, 
+    .search, 
+    .message, 
+    .closer,
+    .busca,
+    .title,
+    .badge,
+    input,
+    button,
+    textarea
+        margin: 0;
+    .closer
+        display: none
+
+    .closer-button
+        display: flex
+    .busca
+        height: 300px
+    .badge
+        margin: 0 5px
+
+    .search,
+    input,
+    button,
+    textarea
+        margin-bottom: 20px;
+    footer p
+        text-align: center
+
+    .footer-logo,
+          width: 100% 
+    .profile  
+        display: -ms-flexbox
+        display: flex
+        min-height: 100%
+        height: 100%
+        justify-content: center
+        -ms-flex-item-align: center
+        -ms-flex-align: center
+        align-items: center
+        -ms-flex-direction: row
+        direction: row
+
+    ul.topnav li:not(:nth-child(1)) 
+        display: none
+     
+    ul.topnav li.dropdownIcon 
+        display: block
+        float: right
+      
+    ul.topnav.responsive li.dropdownIcon
+        position: absolute
+        top: 0
+        right: 0
+      
+    ul.topnav.responsive 
+        position: relative
+      
+    ul.topnav.responsive li
+        display: inline
+        float: none
+      
+    ul.topnav.responsive li a 
+        display: block
+        text-align: left
+
+    ul.topnav li.invisible
+        display: block
+        text-align: left
+

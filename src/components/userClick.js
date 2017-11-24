@@ -45,7 +45,7 @@ class UserPageClick extends Component {
          } = user;
          
        if(this.state.redirect)
-            return <Redirect to={{pathname: '/message', state: {id: this.props.id}}} />;
+            return <Redirect to={{pathname: '/message', state: { id: this.props.id, nome: name }}} />;
 
        if(!user)
             return <p>Loading...</p>
@@ -56,7 +56,6 @@ class UserPageClick extends Component {
                     <div className="row">    
                         <div className="col-3  container">
                             <Image classe="profile social" photo={ photo } />
-                            <p> { name }, { age }, anos </p>
 
                             <div className="social">
                                 <Social img={insta} link={`https://instagram.com/${ instagram }`} classe="badge" />
@@ -65,6 +64,7 @@ class UserPageClick extends Component {
                                 <Social img={yout} link={`https://youtube.com/${ youtube }`} classe="badge" />
                             </div>
         
+                            <p> { name }, { age }, anos </p>
                             <p><Image photo={piano} classe="icons"/> {hability}</p>
                             <p><Image photo={metronome} classe="icons"/> {tags}</p>
                             <p> <Image photo={local} classe="icons"/> {city}, {state}</p>

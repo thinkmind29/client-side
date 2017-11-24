@@ -13,7 +13,7 @@ class Search extends Component {
 
     constructor(){
         super();
-        this.state = { busca: '', click: false, id: '' }
+        this.state = { busca: '', click: false, id: '', nome: '' }
     }
 
     componentDidMount() {
@@ -25,15 +25,16 @@ class Search extends Component {
     searchTerms = () => {
 
         const param = ReactDOM.findDOMNode(this.refs.option).value;
-        const param2 = (ReactDOM.findDOMNode(this.refs.word).value).toUpperCase();
+        const param2 = (ReactDOM.findDOMNode(this.refs.word).value).toLowerCase();
         this.props.searchUser('SEARCH', param, param2);
         
     }
 
-    onItemPress = (id) => {
+    onItemPress = (id,nome) => {
         this.setState({
             click: true,
-            id
+            id,
+            nome
         });
     }
 
@@ -50,7 +51,7 @@ class Search extends Component {
         })
 
         if(this.state.click === true)
-            return <User id={this.state.id}/>
+            return <User id={this.state.id} nome={this.state.nome}/>
 
         return <div className="search">
         <div className="row">
@@ -59,7 +60,7 @@ class Search extends Component {
             
         </div>
         <div className="row">       
-            <div className="col-7">
+            <div className="col-7 busca">
                 <Opcoes ref="option" />
                 <input type="search" placeholder="Pesquisar" ref="word" />
                 <Button click={this.searchTerms} name="pesquisar" />

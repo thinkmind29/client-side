@@ -6,6 +6,7 @@
     "axios": "^0.17.1",
     "jquery": "^3.2.1",
     "node-sass-chokidar": "0.0.3",
+    "npm-run-all": "^4.1.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-facebook-login": "^3.6.2",
@@ -13,16 +14,18 @@
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
+    "react-spinkit": "^3.0.0",
     "redux": "^3.7.2",
-    "redux-promise": "^0.5.3"
+    "redux-promise": "^0.5.3",
+    "serve": "^6.4.1"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/styles/sass -o src/styles/css",
     "watch-css": "npm run build-css && node-sass-chokidar src/styles/sass -o src/styles/css --watch --recursive",
-    "start-js": "react-scripts start",
-    "start": "npm-run-all -p watch-css start-js",
+    "start-js": "npm-run-all -p watch-css start-js",
+    "start": "react-scripts start && serve -s build",
     "build-js": "react-scripts build",
-    "build": "npm-run-all build-css build-js",
+    "build": "npm-run-all build-css build-jsnpm-run-all -p watch-css start-js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }

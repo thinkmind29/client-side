@@ -6,13 +6,16 @@ import Painel from './painel';
 import Chat from './chat';
 import Button from './button';
 import { chat } from '../actions';
+import Spinner from 'react-spinkit';
+
 
 
 class Message extends Component {
 
     constructor(props){
         super(props);
-        this.state = {persons: [], mensagem: '', id: props.location.state.id };
+        console.log(props.location.state)
+        this.state = {persons: [], mensagem: '', id: props.location.state.id, nome: props.location.state.nome };
     }
 
     componentDidMount() {
@@ -62,18 +65,11 @@ class Message extends Component {
         return (
             <div className="message">
                 <div className='row'>
-                    <div className="col-4">
-                        {/* <Painel person={this.state.persons} /> */}
-                    </div>
-                    <div className="col-8">
+                    <h1>{ this.state.nome }</h1>
+                    <div className="col-12 container-msg">
                         <Chat message={ this.props.message } />
                     </div>
-                </div>
-                <div className="row">
-                    <div className="col-4"></div>
-                    <div className="col-8">
                         <textarea ref="mensagem"></textarea><Button name="Enviar" click={this.sendMessage}/>
-                    </div>
                 </div>
             </div>
         );

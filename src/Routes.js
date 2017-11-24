@@ -14,7 +14,8 @@ const Routes = () => {
     return  <Router>
                 <div>
                     <Nav />
-                    <Route exact path="/" component={ Login } />
+    
+                    <Route exact path='/' component={ Login } />
                     <Route path="/user" component={ User } />
                     <Route path="/search" component={ Search } />
                     <Route path="/message" component={ Chat } />

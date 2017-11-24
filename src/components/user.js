@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
 import { fetchUser } from '../actions';
+import Spinner from 'react-spinkit';
 
 import Image from './image';
 import Social from './social';
@@ -18,15 +20,20 @@ class UserPage extends Component {
    
     constructor(props){
         super(props);
-        if(localStorage.getItem('user') === undefined || localStorage.getItem('user') === null)
-            localStorage.setItem('user', props.location.state.token);
-        this.state = {id: localStorage.getItem('user')}
+        // localStorage.setItem('user', props.location.state.token);
+        
+        this.state = {redirect: false, id: localStorage.getItem('user')}
     }
-
-   componentDidMount() {
+    
+    componentDidMount() {
+     
      this.props.fetchUser(this.state.id);
    }
 
+   sair = () => {
+       localStorage.removeItem('user');
+       this.setState({ redirect: true });
+   }
    
    render() {
 
@@ -39,18 +46,22 @@ class UserPage extends Component {
          } = user;
          
          localStorage.setItem('chat', _id);
-         
 
-       if(!user)
-            return <p>Loading...</p>
+       if(this.state.redirect)
+            return <Redirect to="/" />
 
-        return (
+        else if(!user || user === [] || user === '' || user === null || user === {} || user ===  undefined)
+            return <p>Loading ... </p>
+            // return <div className="user">
+                {/* <Spinner name="double-bounce" color="blue"/> */}
+            // </div>
+         return (
             <div>         
                 <div className="user">
-                    <div className="row">    
-                        <div className="col-3  container">
+                    <div className="row"> 
+                        
+                        <div className="col-3 container">
                             <Image classe="profile social" photo={ photo } />
-                            <p> { name }, { age }, anos </p>
 
                             <div className="social">
                                 <Social img={insta} link={`https://instagram.com/${ instagram }`} classe="badge" />
@@ -59,12 +70,21 @@ class UserPage extends Component {
                                 <Social img={yout} link={`https://youtube.com/${ youtube }`} classe="badge" />
                             </div>
         
+                            <p style={{textAlign: 'left'}}> { name }, { age }, anos </p>
                             <p><Image photo={piano} classe="icons"/> {hability}</p>
                             <p><Image photo={metronome} classe="icons"/> {tags}</p>
                             <p> <Image photo={local} classe="icons"/> {city}, {state}</p>
+                            <a className="none" href="javascript:void(0)" onClick={this.sair}>Sair</a>
+                            
+                            <div className="links">
+                            <a href="javascript:void(0)" onClick={this.sair}>Sair</a>
+                            <Link  to="/search">Pesquisar</Link>
+                            <Link  to="/search">Mensagens</Link>              
+                            </div>
                         </div>
 
                         <div className="col-9 information">
+                           
                         <iframe width="100%" height="450" src="https://www.youtube.com/embed/YelUX18albY"></iframe>
                         <div className='biografia'>
                             <h1>Sobre Mim</h1>
@@ -77,10 +97,12 @@ class UserPage extends Component {
             </div> 
             </div>
         );
-    }
+    
+}
 }
 
 const mapStateToProps = (state) => {
+    console.log(state)
     return { user: state.user }
 };
 const mapDispatchToProps = (dispatch) =>{

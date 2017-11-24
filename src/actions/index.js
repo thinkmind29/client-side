@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const REQUEST_URL = 'https://musically.herokuapp.com';
+const REQUEST_URL = 'https://apimusically.herokuapp.com';
 const id = sessionStorage.getItem('chat');
 
 
@@ -103,8 +103,7 @@ export const chat =  (type, data) => {
 
     switch(type){
         case 'POST_SEND':
-            // const request =  axios.post(`${REQUEST_URL}/chat`, data);
-            const request =  axios.post(`http://localhost:5000/chat`, data);
+            const request =  axios.post(`${REQUEST_URL}/chat`, data);
         case 'GET':
             const request_get = axios.get(`${REQUEST_URL}/chat/${data.remetente_id}/${data.destinatario_id}`);  
             return{
