@@ -6,13 +6,14 @@ import { searchUser } from '../actions';
 import Painel from './painel';
 import Button from './button';
 import Opcoes from './options';
+import User from './userClick';
 
 class Search extends Component {
 
 
     constructor(){
         super();
-        this.state = { busca: '' }
+        this.state = { busca: '', click: false, id: '' }
     }
 
     componentDidMount() {
@@ -29,16 +30,27 @@ class Search extends Component {
         
     }
 
+    onItemPress = (id) => {
+        this.setState({
+            click: true,
+            id
+        });
+    }
+
     render() {
         const { search, tags } = this.props;
 
         const term = search.map( src => {
-            return <Painel key={src._id} item={src}/>
+            return <Painel key={src._id} item={src} 
+            onItemPress={this.onItemPress}/>
         })
 
         const tag = tags.map( src => {
-            return <Painel key={src.id} item={src} />
+            return <Painel key={src._id} item={src} onItemPress={this.onItemPress} />
         })
+
+        if(this.state.click === true)
+            return <User id={this.state.id}/>
 
         return <div className="search">
         <div className="row">

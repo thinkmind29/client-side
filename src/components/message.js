@@ -22,16 +22,17 @@ const message = [
 
 class Message extends Component {
 
-    constructor(){
-        super();
-        this.state = {persons: [], mensagem: '' };
+    constructor(props){
+        super(props);
+        this.state = {persons: [], mensagem: '', id: props.location.state.id };
+        alert(props.id);
     }
 
     componentDidMount() {
     
         const data = {
-            remetente_id: '5a162546c23d110012930ebb',
-            destinatario_id: '5a0fcd2d4362660012e7e6d0',
+            remetente_id: localStorage.getItem('chat'),
+            destinatario_id: this.state.id,
          }
 
        this.props.chat('GET', data)
@@ -40,8 +41,8 @@ class Message extends Component {
     componentDidUpdate(){
         
         const data = {
-            remetente_id: '5a162546c23d110012930ebb',
-            destinatario_id: '5a0fcd2d4362660012e7e6d0',
+            remetente_id: localStorage.getItem('chat'),
+            destinatario_id: this.state.id,
          }
 
 
@@ -51,18 +52,19 @@ class Message extends Component {
 
     sendMessage = (e) => {
         e.preventDefault();
+        const horario = Date.getDay();
+
         const data = {
-            remetente_id: '5a0fcd2d4362660012e7e6d0',
-            destinatario_id: '5a162546c23d110012930ebb',
-            mensagem: ReactDOM.findDOMNode(this.refs.mensagem).value
+            remetente_id: localStorage.getItem('chat'),
+            destinatario_id: this.state.id,
+            mensagem: ReactDOM.findDOMNode(this.refs.mensagem).value,
+            data: horario
         }
 
-        // const data = {
-        //     remetente_id: '5a162546c23d110012930ebb',
-        //     destinatario_id: '5a0fcd2d4362660012e7e6d0',
-        //     mensagem: ReactDOM.findDOMNode(this.refs.mensagem).value            
-        //  }
-        this.props.chat('POST_SEND', data)
+        // this.props.chat('POST_SEND', data)
+        alert(horario)
+        ReactDOM.findDOMNode(this.refs.mensagem).value = '';
+        
     }
 
     render() {

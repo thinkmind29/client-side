@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchUser } from '../actions';
+import { fetchUserById } from '../actions';
 
 import Image from './image';
 import Social from './social';
@@ -14,17 +15,23 @@ import piano from '../img/piano.png';
 import metronome from '../img/metrone.png';
 import twit from '../img/twitter.png';
 
-class UserPage extends Component {
+class UserPageClick extends Component {
    
     constructor(props){
         super(props);
-        if(localStorage.getItem('user') === undefined || localStorage.getItem('user') === null)
-            localStorage.setItem('user', props.location.state.token);
-        this.state = {id: localStorage.getItem('user')}
+        alert(props.id);
+        this.state = { id: props.id, redirect: false }
     }
 
    componentDidMount() {
-     this.props.fetchUser(this.state.id);
+     this.props.fetchUserById(this.state.id);
+   }
+
+
+   message = () => {
+        this.setState({
+            redirect: true
+        })
    }
 
    
@@ -38,8 +45,8 @@ class UserPage extends Component {
                 tags, twitter, city, _id
          } = user;
          
-         localStorage.setItem('chat', _id);
-         
+       if(this.state.redirect)
+            return <Redirect to={{pathname: '/message', state: {id: this.props.id}}} />;
 
        if(!user)
             return <p>Loading...</p>
@@ -62,6 +69,7 @@ class UserPage extends Component {
                             <p><Image photo={piano} classe="icons"/> {hability}</p>
                             <p><Image photo={metronome} classe="icons"/> {tags}</p>
                             <p> <Image photo={local} classe="icons"/> {city}, {state}</p>
+                            <a href="javascript:void(0)" onClick={ this.message}> Mensagem </a>
                         </div>
 
                         <div className="col-9 information">
@@ -81,10 +89,11 @@ class UserPage extends Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state);
     return { user: state.user }
 };
 const mapDispatchToProps = (dispatch) =>{
-    return bindActionCreators({ fetchUser }, dispatch)
+    return bindActionCreators({ fetchUserById }, dispatch)
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserPage);
+export default connect(mapStateToProps, mapDispatchToProps)(UserPageClick);

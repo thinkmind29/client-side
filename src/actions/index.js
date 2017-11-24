@@ -12,6 +12,13 @@ export const fetchUser = (token) => {
         payload: request
     }
 }
+export const fetchUserById = (id) => {
+    const request = axios.get(`http://localhost:5000/user/id/${id}`)
+    return{
+        type: 'GET_USER',
+        payload: request
+    }
+}
 
 export const searchUser = (type, param, param2,) => {
     switch(type){
@@ -32,7 +39,6 @@ export const searchUser = (type, param, param2,) => {
     }
     
 }
-
 
 export const login = (data) => {
     console.log(data);
