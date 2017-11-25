@@ -65,7 +65,7 @@ class Message extends Component {
         return (
             <div className="message">
                 <div className='row'>
-                    <h1>{ this.state.nome }</h1>
+                    <h1 className="nome-message">{ this.state.nome }</h1>
                     <div className="col-12 container-msg">
                         <Chat message={ this.props.message } />
                     </div>
