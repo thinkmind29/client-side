@@ -410,3 +410,6 @@ li.painel p {
   ul.topnav li.invisible {
     display: block;
     text-align: left; } }
+.nome-message{
+  text-tranform: uppercase;
+}
