@@ -408,5 +408,5 @@ li.painel p {
     display: block;
     text-align: left; } }
 
-.nome-message, .bio {
+.text-painel, .nome-message, .bio {
   text-transform: uppercase; }
