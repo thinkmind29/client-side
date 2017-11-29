@@ -19,25 +19,15 @@ import twit from '../img/twitter.png';
 class UserPage extends Component {
    
     constructor(props){
-        super(props);
-        // localStorage.setItem('user', props.location.state.token);
-        
+        super(props); 
         this.state = {redirect: false, id: localStorage.getItem('user')}
     }
     
-    componentDidMount() {
-     
-     this.props.fetchUser(this.state.id);
-   }
-
-   sair = () => {
-       localStorage.removeItem('user');
-       this.setState({ redirect: true });
-   }
+    componentDidMount() { 
+         this.props.fetchUser(this.state.id);
+      }
    
    render() {
-
-        
         const { user } = this.props.user;
         const { name, photo, biography, 
                 instagram, youtube, soundCloud,
@@ -45,17 +35,16 @@ class UserPage extends Component {
                 tags, twitter, city, _id
          } = user;
          
-         localStorage.setItem('chat', _id);
+       localStorage.setItem('chat', _id);
 
        if(this.state.redirect)
             return <Redirect to="/" />
 
-        else if(!user || user === [] || user === '' || user === null || user === {} || user ===  undefined)
+        else if(!user)
             return <p>Loading ... </p>
-            // return <div className="user">
-                {/* <Spinner name="double-bounce" color="blue"/> */}
-            // </div>
-         return (
+
+        
+      return (
             <div>         
                 <div className="user">
                     <div className="row"> 
@@ -74,7 +63,7 @@ class UserPage extends Component {
                             <p><Image photo={piano} classe="icons"/> {hability}</p>
                             <p><Image photo={metronome} classe="icons"/> {tags}</p>
                             <p> <Image photo={local} classe="icons"/> {city}, {state}</p>
-                            <a className="none" href="javascript:void(0)" onClick={this.sair}>Sair</a>
+                            <a className="none" href="javascript:void(0)" onClick={() => {localStorage.removeItem('user'); this.setState({ redirect: true }}>Sair</a>
                             
                             <div className="links">
                             <a href="javascript:void(0)" onClick={this.sair}>Sair</a>
