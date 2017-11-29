@@ -65,7 +65,7 @@ class UserPage extends Component {
                             <p><Image photo={ piano } classe="icons"/> {hability}</p>
                             <p><Image photo={ metronome } classe="icons"/> { tags }</p>
                             <p> <Image photo={ local } classe="icons"/> { city }, { state }</p>
-                            <a href="javascript:void(0)" onClick={this.sair}>Sair</a>
+                            <a href="javascript:void(0)" onClick={() => {localStorage.removeItem('user'); this.setState({redirect: true})}}>Sair</a>
                             
                         </div>
 

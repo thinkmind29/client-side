@@ -22,16 +22,16 @@ class NavBar extends React.Component {
     render() {
 
     if(localStorage.getItem('user') === null)
-      return
+      return(
         <nav>       
         <ul className="topnav" ref="dropdownClick">
           <li><Link to="/">Musically</Link></li>
-          <li className="dropdownIcon"><a onClick={ this.dropDownMenu} href="javascript:void(0)">&#9776;</a></li>
+          <li className="dropdownIcon"><a onClick={ this.dropDownMenu } href="javascript:void(0)">&#9776;</a></li>
 
         </ul>
-        </nav> 
+      </nav> )
         
-        
+    else     
     return( 
         <nav>       
         <ul className="topnav" ref="dropdownClick">

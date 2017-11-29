@@ -21,7 +21,7 @@ const Routes = () => {
                     <Route path="/message" component={ Chat } />
                     <Route path="/register" component={ Register } />
                     <Route path="/formulario" component={ Formulario } />
-                    <Footer />
+
                 </div>
             </Router>
 }
